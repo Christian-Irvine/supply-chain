@@ -577,6 +577,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693b8e09dd95a044cb8eb4b2910ad49b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 441335404}
+  horizontalOffset: 6
+  verticalOffset: 8
+  followSpeed: 8
 --- !u!114 &688547626
 MonoBehaviour:
   m_ObjectHideFlags: 0
