@@ -7,7 +7,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField][Range(0, 20)] private float horizontalOffset;
     [SerializeField][Range(0, 20)] private float verticalOffset;
-    [SerializeField][Range(0, 20)] private float followSpeed;
+    [SerializeField, Range(0, 20)] private float followSpeed;
 
     void Update()
     {
