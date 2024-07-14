@@ -342,7 +342,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 397283267}
-  tempobject: {fileID: 1457741956}
 --- !u!156049354 &397283267
 Grid:
   m_ObjectHideFlags: 0
@@ -673,6 +672,7 @@ MonoBehaviour:
   rayIgnoreMask:
     serializedVersion: 2
     m_Bits: 0
+  prefab: {fileID: 1457741956}
 --- !u!1 &719234513
 GameObject:
   m_ObjectHideFlags: 0
