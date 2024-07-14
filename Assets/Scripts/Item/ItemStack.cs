@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A class used for storing items inside of inventories
+/// </summary>
 public class ItemStack
 {
     private ItemDataSO itemData;

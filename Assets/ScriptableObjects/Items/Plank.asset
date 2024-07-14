@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: Plank
   modelPrefab: {fileID: 0}
   purchaseCost: 0
+  maxStackSize: 2
