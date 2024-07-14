@@ -10,7 +10,7 @@ public class ItemDataSO : ScriptableObject
 {
     public string displayName;
     public string id;
-    public GameObject modelPrefab;
+    public WorldItem worldItem;
     [Tooltip("The cost to buy if item is purchaseable as a raw ingredient")] 
     public int purchaseCost;
     public int maxStackSize = 2;

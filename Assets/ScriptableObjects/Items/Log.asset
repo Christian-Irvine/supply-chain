@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Log
   id: log
-  modelPrefab: {fileID: 0}
+  worldItem: {fileID: 5867516015872712547, guid: 7b9c8d294ad4ef94e903263d1d5b6e5d,
+    type: 3}
   purchaseCost: 3
   maxStackSize: 2

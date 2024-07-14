@@ -8,5 +8,25 @@ using UnityEngine;
 public class ItemSlot : MonoBehaviour
 {
     private WorldItem worldItem;
-    public WorldItem WorldItem { get => worldItem; set => worldItem = value; }
+    [SerializeField] private Transform defaultItemDisplayPosition;
+    [SerializeField] private bool hasStartingTestLog = false;
+
+    public WorldItem WorldItem { get => worldItem; set {
+            worldItem = value;
+            SetWorldItemPosition();
+        }
+    }
+
+    private void Start()
+    {
+        if (hasStartingTestLog)
+        {
+            WorldItem = Instantiate(ItemManager.Instance.LookupItem("log").worldItem);
+        }
+    }
+
+    private void SetWorldItemPosition()
+    {
+        worldItem.transform.position = defaultItemDisplayPosition.position;
+    }
 }
