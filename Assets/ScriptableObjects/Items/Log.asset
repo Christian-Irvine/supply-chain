@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e870b29e913531e40ac09005fdc7c6a9, type: 3}
   m_Name: Log
   m_EditorClassIdentifier: 
-  itemName: Log
+  displayName: Log
+  id: log
   modelPrefab: {fileID: 0}
   purchaseCost: 3
   maxStackSize: 2

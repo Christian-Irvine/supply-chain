@@ -7,15 +7,21 @@ using UnityEngine;
 /// </summary>
 public class ItemStack
 {
-    private ItemDataSO itemData;
-    public ItemDataSO ItemData {  get { return itemData; } }
+    private string itemID;
+    public string ItemID { get { return itemID; } set { itemID = value; } }
 
     private int count;
     public int Count { get { return count; } set { count = Mathf.Max(0, value); } }
 
+    public ItemStack(string itemID, int count = 0)
+    {
+        ItemID = itemID;
+        Count = count;
+    }
+
     public ItemStack(ItemDataSO itemData, int count = 0)
     {
-        this.itemData = itemData;
-        this.count = Mathf.Max(0, count);
+        ItemID = itemData.id;
+        Count = count;
     }
 }

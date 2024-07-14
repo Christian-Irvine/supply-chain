@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e870b29e913531e40ac09005fdc7c6a9, type: 3}
   m_Name: Plank
   m_EditorClassIdentifier: 
-  itemName: Plank
+  displayName: Plank
+  id: plank
   modelPrefab: {fileID: 0}
   purchaseCost: 0
   maxStackSize: 2

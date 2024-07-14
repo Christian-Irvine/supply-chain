@@ -8,7 +8,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemDataSO", menuName = "ScriptableObjects/ItemData", order = 1)]
 public class ItemDataSO : ScriptableObject
 {
-    public string itemName;
+    public string displayName;
+    public string id;
     public GameObject modelPrefab;
     [Tooltip("The cost to buy if item is purchaseable as a raw ingredient")] 
     public int purchaseCost;
