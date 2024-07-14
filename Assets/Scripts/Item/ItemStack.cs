@@ -8,10 +8,10 @@ using UnityEngine;
 public class ItemStack
 {
     private string itemID;
-    public string ItemID { get { return itemID; } set { itemID = value; } }
+    public string ItemID { get => itemID;  set => itemID = value;  }
 
     private int count;
-    public int Count { get { return count; } set { count = Mathf.Max(0, value); } }
+    public int Count { get => count; set => count = Mathf.Max(0, value); }
 
     public ItemStack(string itemID, int count = 0)
     {

@@ -9,11 +9,11 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private List<ItemDataSO> registeredItems = new List<ItemDataSO>();
     [SerializeField] private Dictionary<string, ItemDataSO> itemLookup = new Dictionary<string, ItemDataSO>();
     
-    public List<ItemDataSO> RegisteredItems { get { return registeredItems; } }
     /// <summary>
     /// Use LookupItem() method when possible instead of referencing Dictionary
     /// </summary>
-    public Dictionary<string, ItemDataSO> ItemLookup { get { return itemLookup; } }
+    public Dictionary<string, ItemDataSO> ItemLookup { get => itemLookup; }
+    public List<ItemDataSO> RegisteredItems { get => registeredItems; }
 
     private void Awake()
     {

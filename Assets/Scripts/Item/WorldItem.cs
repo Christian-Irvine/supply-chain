@@ -8,7 +8,7 @@ using UnityEngine;
 public class WorldItem : MonoBehaviour
 {
     private string itemID;
-    public string ItemID {  get { return itemID; } }
+    public string ItemID {  get => itemID; }
 
     public void SetStartValues(string itemID)
     {

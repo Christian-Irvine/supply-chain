@@ -14,7 +14,7 @@ public class GridManager : MonoBehaviour
 {
     public static GridManager Instance;
 
-    public Grid Grid {  get { return grid; } }
+    public Grid Grid {  get => grid; }
     [SerializeField] private Grid grid;
 
     private void Awake()
