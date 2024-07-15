@@ -1,0 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum FloorType
+{
+    Factory,
+    Store,
+    Storage
+}
+
+/// <summary>
+/// The ScriptableObject class used for storing the data on buildings
+/// </summary>
+[CreateAssetMenu(fileName = "BuildingDataSO", menuName = "ScriptableObjects/BuildingData", order = 2)]
+public class BuildingDataSO : ScriptableObject
+{
+    public string displayName;
+    public string id;
+    public GameObject prefab;
+    public int purchaseCost;
+    public List<FloorType> floorTypes;
+}

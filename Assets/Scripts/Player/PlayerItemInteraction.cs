@@ -29,7 +29,7 @@ public class PlayerItemInteraction : MonoBehaviour
 
     private void SwitchItems(ItemSlot slot)
     {
-        WorldItem tempItem = slot.WorldItem;
+        ItemObject tempItem = slot.WorldItem;
         slot.WorldItem = playerItemSlot.WorldItem;
         playerItemSlot.WorldItem = tempItem;
     }

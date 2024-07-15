@@ -22,7 +22,10 @@ public class PlayerPlacing : MonoBehaviour
 
         //Debug.Log(hit.collider.name + ", " + hit.point);
 
-        GridManager.Instance.PlaceBuilding(prefab, hit.point);
+        if (hit.collider.CompareTag("FactoryFloor"))
+        {
+            GridManager.Instance.PlaceBuilding(prefab, new Vector3(hit.point.x, 0, hit.point.z));
+        }
     }
 
     /// <summary>

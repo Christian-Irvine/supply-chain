@@ -7,11 +7,11 @@ using UnityEngine;
 /// </summary>
 public class ItemSlot : MonoBehaviour
 {
-    private WorldItem worldItem;
+    private ItemObject worldItem;
     [SerializeField] private Transform defaultItemDisplayPosition;
     [SerializeField] private bool hasStartingTestLog = false;
 
-    public WorldItem WorldItem { get => worldItem; set {
+    public ItemObject WorldItem { get => worldItem; set {
             worldItem = value;
             SetupWorldItem();
         }

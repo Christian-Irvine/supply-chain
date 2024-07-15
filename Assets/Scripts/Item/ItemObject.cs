@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// The Monobehaviour version of an item, like something the player is holding, or on a conveyor belt
 /// </summary>
-public class WorldItem : MonoBehaviour
+public class ItemObject : MonoBehaviour
 {
     [SerializeField] private string itemID;
     public string ItemID { get => itemID; set => itemID = value; }
