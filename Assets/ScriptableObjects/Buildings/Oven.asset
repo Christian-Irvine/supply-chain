@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de794074c4fabe4f96823a050240493, type: 3}
   m_Name: Oven
   m_EditorClassIdentifier: 
-  displayName: Furnace
-  id: furnace
+  displayName: Oven
+  id: oven
   prefab: {fileID: 7728156280742252501, guid: d367dba270edda4478ba161ecd78650d, type: 3}
-  purchaseCost: 10
+  purchaseCost: 20
   size: {x: 3, y: 3}
   floorTypes: 00000000
