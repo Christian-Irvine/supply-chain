@@ -8,5 +8,5 @@ using UnityEngine;
 public class WorldItem : MonoBehaviour
 {
     [SerializeField] private string itemID;
-    public string ItemID { get => itemID; }
+    public string ItemID { get => itemID; set => itemID = value; }
 }

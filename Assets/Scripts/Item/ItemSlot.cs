@@ -13,7 +13,7 @@ public class ItemSlot : MonoBehaviour
 
     public WorldItem WorldItem { get => worldItem; set {
             worldItem = value;
-            SetWorldItemPosition();
+            SetupWorldItem();
         }
     }
 
@@ -22,11 +22,16 @@ public class ItemSlot : MonoBehaviour
         if (hasStartingTestLog)
         {
             WorldItem = Instantiate(ItemManager.Instance.LookupItem("log").worldItem);
+            WorldItem.ItemID = "log";
         }
     }
 
-    private void SetWorldItemPosition()
+    private void SetupWorldItem()
     {
-        worldItem.transform.position = defaultItemDisplayPosition.position;
+        if (worldItem != null) 
+        { 
+            worldItem.transform.SetParent(transform, false);
+            worldItem.transform.position = defaultItemDisplayPosition.position;
+        }
     }
 }
