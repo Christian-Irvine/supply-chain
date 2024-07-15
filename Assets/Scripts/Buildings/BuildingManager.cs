@@ -15,7 +15,12 @@ public class BuildingManager : MonoBehaviour
     public List<BuildingDataSO> RegisteredBuildings { get => registeredBuildings; }
 
     private BuildingDataSO pickedBuilding;
-    public BuildingDataSO PickedBuilding { get => pickedBuilding; }
+    public BuildingDataSO PickedBuilding { get => pickedBuilding; set
+        {   
+            pickedBuilding = value;
+            UpdateGhost();
+        }
+    }
 
     private void Awake()
     {
@@ -28,7 +33,7 @@ public class BuildingManager : MonoBehaviour
 
     void Start()
     {
-        pickedBuilding = LookupBuilding("slicer");
+        PickedBuilding = LookupBuilding("oven");
     }
 
     void Update()
@@ -54,6 +59,20 @@ public class BuildingManager : MonoBehaviour
         {
             Debug.LogWarning($"Couldn't find building with id '{id}' in registry");
             return null;
+        }
+    }
+
+    private void UpdateGhost()
+    {
+        if (PickedBuilding != null)
+        {
+            PlacementGhost.Instance.GhostModel.SetActive(true);
+            PlacementGhost.Instance.SetScale(pickedBuilding.size);
+        }
+        else
+        {
+            PlacementGhost.Instance.GhostModel.SetActive(false);
+            PlacementGhost.Instance.SetScale(Vector2Int.one);
         }
     }
 }

@@ -16,4 +16,5 @@ MonoBehaviour:
   id: slicer
   prefab: {fileID: 7728156280742252501, guid: 271a71b1f080db448ae008f8fc90f66c, type: 3}
   purchaseCost: 8
+  size: {x: 1, y: 1}
   floorTypes: 00000000
