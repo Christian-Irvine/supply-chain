@@ -7,7 +7,7 @@ public class ItemManager : MonoBehaviour
     public static ItemManager Instance;
 
     [SerializeField] private List<ItemDataSO> registeredItems = new List<ItemDataSO>();
-    [SerializeField] private Dictionary<string, ItemDataSO> itemLookup = new Dictionary<string, ItemDataSO>();
+    private Dictionary<string, ItemDataSO> itemLookup = new Dictionary<string, ItemDataSO>();
     
     /// <summary>
     /// Use LookupItem() method when possible instead of referencing Dictionary

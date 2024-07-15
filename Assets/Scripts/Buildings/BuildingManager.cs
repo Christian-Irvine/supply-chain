@@ -7,13 +7,15 @@ public class BuildingManager : MonoBehaviour
     public static BuildingManager Instance;
 
     [SerializeField] private List<BuildingDataSO> registeredBuildings = new List<BuildingDataSO>();
-    [SerializeField] private Dictionary<string, BuildingDataSO> buildingLookup = new Dictionary<string, BuildingDataSO>();
-
+    private Dictionary<string, BuildingDataSO> buildingLookup = new Dictionary<string, BuildingDataSO>();
     /// <summary>
     /// Use LookupBuilding() method when possible instead of referencing Dictionary
     /// </summary>
     public Dictionary<string, BuildingDataSO> BuildingLookup { get => buildingLookup; }
     public List<BuildingDataSO> RegisteredBuildings { get => registeredBuildings; }
+
+    private BuildingDataSO pickedBuilding;
+    public BuildingDataSO PickedBuilding { get => pickedBuilding; }
 
     private void Awake()
     {
@@ -26,7 +28,7 @@ public class BuildingManager : MonoBehaviour
 
     void Start()
     {
-        
+        pickedBuilding = LookupBuilding("slicer");
     }
 
     void Update()
@@ -42,7 +44,7 @@ public class BuildingManager : MonoBehaviour
         });
     }
 
-    public BuildingDataSO LookupItem(string id)
+    public BuildingDataSO LookupBuilding(string id)
     {
         try
         {

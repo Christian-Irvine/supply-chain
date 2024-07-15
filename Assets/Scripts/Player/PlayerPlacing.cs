@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +9,6 @@ public class PlayerPlacing : MonoBehaviour
     [SerializeField] Camera cam;
     [SerializeField] float rayDistance = 50;
     [SerializeField] LayerMask rayIgnoreMask;
-    [SerializeField] private GameObject prefab;
 
     void Start()
     {
@@ -20,10 +20,16 @@ public class PlayerPlacing : MonoBehaviour
         RaycastHit hit = CheckClickRaycast();
         if (hit.collider == null) return;
 
-        if (hit.collider.CompareTag("FactoryFloor"))
+        BuildingDataSO buildingData = BuildingManager.Instance.PickedBuilding;
+        GameObject prefab = buildingData.prefab;
+
+        buildingData.floorTypes.ForEach(type =>
         {
-            GridManager.Instance.PlaceBuilding(prefab, new Vector3(hit.point.x, 0, hit.point.z));
-        }
+            if (hit.collider.CompareTag($"{type}Floor"))
+            {
+                GridManager.Instance.PlaceBuilding(prefab, new Vector3(hit.point.x, 0, hit.point.z));
+            }
+        });
     }
 
     /// <summary>
