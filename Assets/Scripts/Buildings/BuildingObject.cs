@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class BuildingObject : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private string buildingID;
+    public string BuildingID {  get => buildingID; set => buildingID = value; }
+    
+    [SerializeField] private Vector2Int gridPosition;
+    public Vector2Int GridPosition { get => gridPosition; set => gridPosition = value; }
+
+
     void Start()
     {
         
     }
-
-    // Update is called once per frame
+  
     void Update()
     {
         
