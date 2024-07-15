@@ -20,8 +20,6 @@ public class PlayerPlacing : MonoBehaviour
         RaycastHit hit = CheckClickRaycast();
         if (hit.collider == null) return;
 
-        //Debug.Log(hit.collider.name + ", " + hit.point);
-
         if (hit.collider.CompareTag("FactoryFloor"))
         {
             GridManager.Instance.PlaceBuilding(prefab, new Vector3(hit.point.x, 0, hit.point.z));
