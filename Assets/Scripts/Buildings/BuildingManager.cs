@@ -37,12 +37,7 @@ public class BuildingManager : MonoBehaviour
 
     void Start()
     {
-        PickedBuilding = LookupBuilding("boiler");
-    }
-
-    void Update()
-    {
-        
+        PickedBuilding = LookupBuilding("oven");
     }
 
     private void RegisterBuildingLookup()

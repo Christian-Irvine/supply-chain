@@ -943,6 +943,7 @@ MonoBehaviour:
   rayIgnoreMask:
     serializedVersion: 2
     m_Bits: 224
+  tempCube: {fileID: 0}
 --- !u!114 &688547628
 MonoBehaviour:
   m_ObjectHideFlags: 0
