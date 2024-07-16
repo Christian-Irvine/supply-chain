@@ -8,7 +8,8 @@ public class PlayerPlacing : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] private float rayDistance = 50;
-    [SerializeField] private LayerMask rayIgnoreMask;
+    [SerializeField] private LayerMask clickRayIgnoreMask;
+    [SerializeField] private LayerMask tileCheckIgnoreMask;
     [SerializeField] private GameObject tempCube;
 
     void Start()
@@ -24,20 +25,19 @@ public class PlayerPlacing : MonoBehaviour
 
         if (hit.collider != null)
         {
-            foreach (FloorType type in BuildingManager.Instance.PickedBuilding.floorTypes)
-            {
-                if (hit.collider.CompareTag($"{type}Floor"))
-                {
-                    PlacementGhost.Instance.GhostModel.gameObject.SetActive(true);
-                    Vector3 ghostPos = new Vector3(hit.point.x, 0, hit.point.z) - BuildingManager.Instance.EvenOffsets;
+            Vector3 hitGridPos = GridManager.Instance.GridToWorldPosition(new Vector3(hit.point.x, 0, hit.point.z) - BuildingManager.Instance.EvenOffsets);
+            PlacementGhost.Instance.GhostModel.gameObject.SetActive(true);
+            Vector3 ghostPos = new Vector3(hit.point.x, 0, hit.point.z) - BuildingManager.Instance.EvenOffsets;
+            PlacementGhost.Instance.gameObject.transform.position = GridManager.Instance.GridToWorldPosition(ghostPos) + BuildingManager.Instance.EvenOffsets;
 
-                    PlacementGhost.Instance.gameObject.transform.position = GridManager.Instance.GridToWorldPosition(ghostPos) + BuildingManager.Instance.EvenOffsets;
-                    return;
-                }
-            }
+            bool placementValid = CanPlaceStructure(hitGridPos, BuildingManager.Instance.PickedBuilding);
+
+            PlacementGhost.Instance.SetValidity(placementValid);
         }
-
-        PlacementGhost.Instance.GhostModel.gameObject.SetActive(false);
+        else
+        {
+            PlacementGhost.Instance.GhostModel.gameObject.SetActive(false);
+        }
     }
 
     private void OnClick(InputAction.CallbackContext ctx)
@@ -48,20 +48,12 @@ public class PlayerPlacing : MonoBehaviour
         BuildingDataSO buildingData = BuildingManager.Instance.PickedBuilding;
         GameObject prefab = buildingData.prefab;
 
-        Vector3 hitPos = GridManager.Instance.GridToWorldPosition(new Vector3(hit.point.x, 0, hit.point.z) - BuildingManager.Instance.EvenOffsets);
+        Vector3 hitGridPos = GridManager.Instance.GridToWorldPosition(new Vector3(hit.point.x, 0, hit.point.z) - BuildingManager.Instance.EvenOffsets);
 
-        if (CanPlaceStructure(hitPos, buildingData.size))
+        if (CanPlaceStructure(hitGridPos, buildingData))
         {
-            buildingData.floorTypes.ForEach(type =>
-            {
-                if (hit.collider.CompareTag($"{type}Floor"))
-                {
-                    GridManager.Instance.PlaceBuilding(prefab, new Vector3(hit.point.x, 0, hit.point.z) - BuildingManager.Instance.EvenOffsets);
-                }
-            });
+            GridManager.Instance.PlaceBuilding(prefab, new Vector3(hit.point.x, 0, hit.point.z) - BuildingManager.Instance.EvenOffsets);
         }
-
-
     }
 
     /// <summary>
@@ -72,24 +64,43 @@ public class PlayerPlacing : MonoBehaviour
     {
         Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
         RaycastHit hit;
-        Physics.Raycast(ray, out hit, rayDistance, ~rayIgnoreMask);
+        Physics.Raycast(ray, out hit, rayDistance, ~clickRayIgnoreMask);
 
         return hit;
     }
 
-    private bool CanPlaceStructure(Vector3 centreGridPosition, Vector2Int size)
+    private bool CanPlaceStructure(Vector3 centreGridPosition, BuildingDataSO buildingData)
     {
-        Vector3 bottomLeftPosition = GetBottomLeftPosition(centreGridPosition, size);
+        Vector3Int bottomLeftPosition = GetBottomLeftPosition(centreGridPosition, buildingData.size);
 
-        Instantiate(tempCube, bottomLeftPosition, Quaternion.identity);
-        return false;
+        for (int x = bottomLeftPosition.x; x < bottomLeftPosition.x + buildingData.size.x; x++)
+        {
+            for (int z = bottomLeftPosition.z; z < bottomLeftPosition.z + buildingData.size.y; z++)
+            {
+                RaycastHit hit = RaycastGridCell(new Vector3(x, 2, z));
+
+                if (hit.collider == null) return false;
+
+                foreach(FloorType type in buildingData.floorTypes)
+                {
+                    if (!hit.collider.CompareTag($"{type}Floor"))
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true;
+
+        // Instantiate(tempCube, new Vector3(x, 0, z), Quaternion.identity);
     }
 
-    private Vector3 GetBottomLeftPosition(Vector3 centreGridPosition, Vector2Int size)
+    private Vector3Int GetBottomLeftPosition(Vector3 centreGridPosition, Vector2Int size)
     {
-        Vector3 bottomLeftPosition = new Vector3(
+        Vector3Int bottomLeftPosition = new Vector3Int(
             GetBottomLeftNumber(Mathf.RoundToInt(centreGridPosition.x), size.x),
-            centreGridPosition.y,
+            Mathf.RoundToInt(centreGridPosition.y),
             GetBottomLeftNumber(Mathf.RoundToInt(centreGridPosition.z), size.y)
         );
 
@@ -99,5 +110,12 @@ public class PlayerPlacing : MonoBehaviour
     private int GetBottomLeftNumber(int position, int length)
     {
         return position - Mathf.CeilToInt(((float)length / 2) - 1);
+    }
+
+    private RaycastHit RaycastGridCell(Vector3 position)
+    {
+        RaycastHit hit;
+        Physics.Raycast(position, Vector3.down, out hit, 3, ~tileCheckIgnoreMask);
+        return hit;
     }
 }

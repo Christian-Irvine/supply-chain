@@ -10,6 +10,10 @@ public class PlacementGhost : MonoBehaviour
     [SerializeField] private GameObject ghostModel;
     public GameObject GhostModel { get => ghostModel; set => ghostModel = value; }
 
+    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private Material validMaterial;
+    [SerializeField] private Material invalidMaterial;
+
     private void Awake()
     {
         if (Instance != null && Instance != this) Destroy(this);
@@ -21,5 +25,10 @@ public class PlacementGhost : MonoBehaviour
     {
         GhostModel.transform.localScale = new Vector3(scale.x + 0.05f, ghostHeight, scale.y + 0.05f);
         Debug.Log($"Scale is now {scale}");
+    }
+
+    public void SetValidity(bool validity)
+    {
+        meshRenderer.material = validity ? validMaterial : invalidMaterial;
     }
 }
