@@ -46,6 +46,8 @@ public class PlayerPlacing : MonoBehaviour
         {
             PlacementGhost.Instance.GhostModel.gameObject.SetActive(false);
         }
+
+        // Set text for invalidity based on invalidReason variable
     }
 
     private void OnClick(InputAction.CallbackContext ctx)
