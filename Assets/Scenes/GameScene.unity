@@ -940,10 +940,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 441335404}
   rayDistance: 50
-  rayIgnoreMask:
+  clickRayIgnoreMask:
     serializedVersion: 2
     m_Bits: 224
-  tempCube: {fileID: 0}
+  tileCheckIgnoreMask:
+    serializedVersion: 2
+    m_Bits: 160
+  tempCube: {fileID: 6366958655087302859, guid: 0151c990691a0b64695c74d15060b66a,
+    type: 3}
 --- !u!114 &688547628
 MonoBehaviour:
   m_ObjectHideFlags: 0
