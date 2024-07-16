@@ -35,7 +35,7 @@ public class GridManager : MonoBehaviour
     /// <param name="direction"></param>
     public void PlaceBuilding(GameObject prefab, Vector3 gridPosition, BuildingFacing direction = BuildingFacing.forward)
     {
-        Vector3 position = Grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(gridPosition.x), Mathf.RoundToInt(gridPosition.y), Mathf.RoundToInt(gridPosition.z)));
+        Vector3 position = GridToWorldPosition(gridPosition);  // Grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(gridPosition.x), Mathf.RoundToInt(gridPosition.y), Mathf.RoundToInt(gridPosition.z)));
         Quaternion rotation = Quaternion.Euler((int)direction * 90, 0, 0);
 
         Instantiate(prefab, position, rotation, transform);

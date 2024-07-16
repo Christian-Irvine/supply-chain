@@ -19,8 +19,12 @@ public class BuildingManager : MonoBehaviour
         {   
             pickedBuilding = value;
             UpdateGhost();
+            UpdateOffsets();
         }
     }
+
+    private Vector3 evenOffsets = Vector3.zero;
+    public Vector3 EvenOffsets { get => evenOffsets; set => evenOffsets = value; }
 
     private void Awake()
     {
@@ -33,7 +37,7 @@ public class BuildingManager : MonoBehaviour
 
     void Start()
     {
-        PickedBuilding = LookupBuilding("oven");
+        PickedBuilding = LookupBuilding("boiler");
     }
 
     void Update()
@@ -74,5 +78,14 @@ public class BuildingManager : MonoBehaviour
             PlacementGhost.Instance.GhostModel.SetActive(false);
             PlacementGhost.Instance.SetScale(Vector2Int.one);
         }
+    }
+
+    private void UpdateOffsets()
+    {
+        EvenOffsets = new Vector3(
+            pickedBuilding.size.x % 2 == 0 ? 0.5f : 0, 
+            0,
+            pickedBuilding.size.y % 2 == 0 ? 0.5f : 0
+        );
     }
 }

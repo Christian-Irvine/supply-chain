@@ -28,7 +28,9 @@ public class PlayerPlacing : MonoBehaviour
                 if (hit.collider.CompareTag($"{type}Floor"))
                 {
                     PlacementGhost.Instance.GhostModel.gameObject.SetActive(true);
-                    PlacementGhost.Instance.gameObject.transform.position = GridManager.Instance.GridToWorldPosition(new Vector3(hit.point.x, 0, hit.point.z));
+                    Vector3 ghostPos = new Vector3(hit.point.x, 0, hit.point.z) - BuildingManager.Instance.EvenOffsets;
+
+                    PlacementGhost.Instance.gameObject.transform.position = GridManager.Instance.GridToWorldPosition(ghostPos) + BuildingManager.Instance.EvenOffsets; // GridManager.Instance.GridToWorldPosition(
                     return;
                 }
             }
@@ -49,7 +51,7 @@ public class PlayerPlacing : MonoBehaviour
         {
             if (hit.collider.CompareTag($"{type}Floor"))
             {
-                GridManager.Instance.PlaceBuilding(prefab, new Vector3(hit.point.x, 0, hit.point.z));
+                GridManager.Instance.PlaceBuilding(prefab, new Vector3(hit.point.x, 0, hit.point.z) - BuildingManager.Instance.EvenOffsets);
             }
         });
     }
