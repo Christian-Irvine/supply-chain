@@ -6,11 +6,19 @@ using UnityEngine.InputSystem;
 
 public class PlayerPlacing : MonoBehaviour
 {
+    public enum InvalidReason
+    {
+        None,
+        OverlapBuilding,
+        WrongFloor
+    }
+
     [SerializeField] private Camera cam;
     [SerializeField] private float rayDistance = 50;
     [SerializeField] private LayerMask clickRayIgnoreMask;
     [SerializeField] private LayerMask tileCheckIgnoreMask;
     [SerializeField] private GameObject tempCube;
+    private InvalidReason invalidReason;
 
     void Start()
     {
@@ -81,16 +89,24 @@ public class PlayerPlacing : MonoBehaviour
 
                 if (hit.collider == null) return false;
 
+                if (hit.collider.CompareTag("Building"))
+                {
+                    invalidReason = InvalidReason.OverlapBuilding;
+                    return false;
+                }
+
                 foreach(FloorType type in buildingData.floorTypes)
                 {
                     if (!hit.collider.CompareTag($"{type}Floor"))
                     {
+                        invalidReason = InvalidReason.WrongFloor;
                         return false;
                     }
                 }
             }
         }
 
+        invalidReason = InvalidReason.None;
         return true;
 
         // Instantiate(tempCube, new Vector3(x, 0, z), Quaternion.identity);
