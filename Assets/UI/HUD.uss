@@ -10,7 +10,6 @@
 }
 
 .money-label {
-    background-color: rgb(233, 233, 212);
     align-self: flex-start;
     width: 20%;
     height: 8%;
@@ -31,4 +30,52 @@
     border-bottom-color: rgb(221, 179, 80);
     text-shadow: 5px 5px 0 rgb(166, 161, 151);
     overflow: hidden;
+}
+
+.label-color {
+    background-color: rgb(233, 233, 212);
+    text-shadow: 5px 5px 0 rgb(166, 161, 151);
+}
+
+.hotbar-label {
+    align-self: center;
+    -unity-text-outline-color: rgba(0, 0, 0, 0);
+    bottom: 0;
+    top: auto;
+    position: absolute;
+    left: auto;
+    width: 90%;
+    height: 15%;
+    max-height: 15%;
+    min-height: 15%;
+    border-left-color: rgb(221, 179, 80);
+    border-right-color: rgb(221, 179, 80);
+    border-top-color: rgb(221, 179, 80);
+    border-bottom-color: rgb(221, 179, 80);
+    border-top-width: 15px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-right-width: 15px;
+    border-left-width: 15px;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.hotbar-button {
+    height: 280px;
+    width: 500px;
+    align-self: center;
+    border-left-color: rgb(221, 179, 80);
+    border-right-color: rgb(221, 179, 80);
+    border-top-color: rgb(221, 179, 80);
+    border-bottom-color: rgb(221, 179, 80);
+    border-top-width: 15px;
+    border-right-width: 15px;
+    border-bottom-width: 15px;
+    border-left-width: 15px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    font-size: 800%;
 }
