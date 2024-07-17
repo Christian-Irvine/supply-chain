@@ -35,11 +35,6 @@ public class BuildingManager : MonoBehaviour
         RegisterBuildingLookup();
     }
 
-    void Start()
-    {
-        PickedBuilding = LookupBuilding("oven");
-    }
-
     private void RegisterBuildingLookup()
     {
         registeredBuildings.ForEach(item =>
