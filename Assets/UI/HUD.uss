@@ -44,10 +44,10 @@
     top: auto;
     position: absolute;
     left: auto;
-    width: 90%;
-    height: 15%;
-    max-height: 15%;
-    min-height: 15%;
+    width: 85%;
+    height: 10%;
+    max-height: 10%;
+    min-height: 10%;
     border-left-color: rgb(221, 179, 80);
     border-right-color: rgb(221, 179, 80);
     border-top-color: rgb(221, 179, 80);
@@ -58,12 +58,13 @@
     border-right-width: 15px;
     border-left-width: 15px;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    flex-grow: 0;
 }
 
 .hotbar-button {
-    height: 280px;
-    width: 500px;
+    height: 180px;
+    width: 450px;
     align-self: center;
     border-left-color: rgb(221, 179, 80);
     border-right-color: rgb(221, 179, 80);
@@ -78,4 +79,10 @@
     border-bottom-right-radius: 40px;
     border-bottom-left-radius: 40px;
     font-size: 800%;
+    padding-right: 0;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 25px;
+    margin-right: 25px;
 }
