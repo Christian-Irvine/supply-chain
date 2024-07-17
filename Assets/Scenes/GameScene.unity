@@ -1800,6 +1800,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1829496612}
+  - component: {fileID: 1829496613}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -1816,13 +1817,30 @@ Transform:
   m_GameObject: {fileID: 1829496611}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.868655, y: -0.4276142, z: 5.0757713}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1375518556}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1829496613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829496611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 417f68267c584b244aa88929f518874b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hud: {fileID: 1375518557}
+  buildMenu: {fileID: 0}
+  storage: {fileID: 0}
+  ingredientStore: {fileID: 0}
+  escapeMenu: {fileID: 0}
 --- !u!1 &1853398517 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6146969370007613438, guid: 97b17fe351966504897c2e8245faeaf6,

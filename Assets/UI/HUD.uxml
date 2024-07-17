@@ -7,6 +7,7 @@
         <ui:VisualElement name="Hotbar" class="label-color hotbar-label" style="flex-grow: 1;">
             <ui:Button text="Button" name="BuildingButton" class="hotbar-button label-color" />
             <ui:Button text="Button" name="StorageButton" class="hotbar-button label-color" />
+            <ui:Button text="Button" name="IngredientStoreButton" class="hotbar-button label-color" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

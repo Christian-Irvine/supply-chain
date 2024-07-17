@@ -22,7 +22,6 @@ public class HUDManager : MonoBehaviour
     private void OnEnable()
     {
         moneyText = hud.Q<Label>(moneyTextElementName);
-        
     }
 
     private void Start()
