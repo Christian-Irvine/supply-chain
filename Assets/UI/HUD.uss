@@ -10,7 +10,7 @@
 }
 
 .money-label {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(233, 233, 212);
     align-self: flex-start;
     width: 20%;
     height: 8%;
@@ -20,11 +20,15 @@
     max-width: 20%;
     min-width: auto;
     min-height: auto;
-    border-bottom-right-radius: 20px;
+    border-bottom-right-radius: 40px;
     border-top-right-radius: 0;
-    
-}
-
-.text-scaling {
     font-size: 1000%;
+    border-bottom-width: 15px;
+    border-right-width: 15px;
+    border-left-color: rgb(221, 179, 80);
+    border-right-color: rgb(221, 179, 80);
+    border-top-color: rgb(221, 179, 80);
+    border-bottom-color: rgb(221, 179, 80);
+    text-shadow: 5px 5px 0 rgb(166, 161, 151);
+    overflow: hidden;
 }

@@ -21,5 +21,12 @@ public class GameManager : MonoBehaviour
         if (Instance != null && Instance != this) Destroy(this);
 
         Instance = this;
-    }   
+    }
+
+    private IEnumerator Start()
+    {
+        yield return null;
+
+        Money = Money; // Calling the money change invoke
+    }
 }

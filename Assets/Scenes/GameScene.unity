@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3078f44e047c251469f4a944d85d973b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
+  money: 1000
   MoneyChange:
     m_PersistentCalls:
       m_Calls: []
@@ -1615,6 +1615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1375518556}
   - component: {fileID: 1375518557}
+  - component: {fileID: 1375518558}
   m_Layer: 0
   m_Name: HUD
   m_TagString: Untagged
@@ -1654,6 +1655,19 @@ MonoBehaviour:
   sourceAsset: {fileID: 9197481963319205126, guid: 07353eeb5e6f79a4897bce235dc40150,
     type: 3}
   m_SortingOrder: 5
+--- !u!114 &1375518558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375518555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 405f43a2027250142909a90244918e88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyTextElementName: MoneyText
 --- !u!1 &1457741956
 GameObject:
   m_ObjectHideFlags: 0
