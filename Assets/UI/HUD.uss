@@ -1,0 +1,30 @@
+.panel {
+    background-color: rgba(67, 67, 67, 0);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    -unity-font-definition: url('project://database/Assets/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=9ef46d5005e01fd4e9fbf7c4624b5a83&type=3#NotInter-Regular');
+    -unity-text-align: upper-left;
+}
+
+.hide {
+    display: none;
+}
+
+.money-label {
+    background-color: rgb(255, 255, 255);
+    align-self: flex-start;
+    width: 20%;
+    height: 8%;
+    -unity-text-align: middle-left;
+    justify-content: flex-start;
+    max-height: 8%;
+    max-width: 20%;
+    min-width: auto;
+    min-height: auto;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 0;
+    
+}
+
+.text-scaling {
+    font-size: 1000%;
+}

@@ -52,11 +52,16 @@ public class PlayerPlacing : MonoBehaviour
 
     private void OnClick(InputAction.CallbackContext ctx)
     {
+        BuildingDataSO buildingData = BuildingManager.Instance.PickedBuilding;
+
+        if (buildingData == null) return;
+
+        GameObject prefab = buildingData.prefab;
+
         RaycastHit hit = CheckPlacementRaycast();
         if (hit.collider == null) return;
 
-        BuildingDataSO buildingData = BuildingManager.Instance.PickedBuilding;
-        GameObject prefab = buildingData.prefab;
+
 
         Vector3 hitGridPos = GridManager.Instance.GridToWorldPosition(new Vector3(hit.point.x, 0, hit.point.z) - BuildingManager.Instance.EvenOffsets);
 
