@@ -16,5 +16,6 @@ MonoBehaviour:
   id: furnace
   prefab: {fileID: 7728156280742252501, guid: 98ff43b0785c8f94a927559744bb0e92, type: 3}
   purchaseCost: 10
+  sprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
   size: {x: 1, y: 1}
   floorTypes: 00000000

@@ -16,5 +16,6 @@ MonoBehaviour:
   id: oven
   prefab: {fileID: 7728156280742252501, guid: d367dba270edda4478ba161ecd78650d, type: 3}
   purchaseCost: 20
+  sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   size: {x: 3, y: 3}
   floorTypes: 00000000

@@ -5,7 +5,9 @@
             <ui:VisualElement name="TitleContainer" class="title-container" style="flex-grow: 1; align-items: flex-start;">
                 <ui:Label text="Buildings" class="h1" />
             </ui:VisualElement>
-            <ui:VisualElement name="ItemsContainer" class="items-container" style="flex-grow: 1;" />
+            <ui:ScrollView name="ScrollView" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="AlwaysVisible" vertical-page-size="-1" class="items-container">
+                <ui:VisualElement name="ScrollContainer" class="scroll-container" style="flex-grow: 1;" />
+            </ui:ScrollView>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

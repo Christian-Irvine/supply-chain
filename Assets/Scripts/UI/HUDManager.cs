@@ -11,11 +11,11 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private string buildMenuElementName;
     [SerializeField] private string storageElementName;
     [SerializeField] private string ingredientStoreElementName;
+    private VisualElement hud;
     private Label moneyText;
     private Button buildMenuButton;
     private Button storageButton;
     private Button ingredientStoreButton;
-    private VisualElement hud;
 
     private void Awake()
     {

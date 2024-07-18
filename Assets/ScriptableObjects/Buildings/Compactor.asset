@@ -16,5 +16,6 @@ MonoBehaviour:
   id: compactor
   prefab: {fileID: 7728156280742252501, guid: 492e16caccfae8a4199dd9a87d4d5532, type: 3}
   purchaseCost: 12
+  sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   size: {x: 2, y: 3}
   floorTypes: 00000000

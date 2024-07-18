@@ -1948,6 +1948,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1680257769}
   - component: {fileID: 1680257770}
+  - component: {fileID: 1680257771}
   m_Layer: 0
   m_Name: BuildMenu
   m_TagString: Untagged
@@ -1987,6 +1988,21 @@ MonoBehaviour:
   sourceAsset: {fileID: 9197481963319205126, guid: fc895846337cb9f4b927cf8fad0ca38e,
     type: 3}
   m_SortingOrder: 2
+--- !u!114 &1680257771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680257768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b9e6d5d2abe8144bbbc5ecf11bc4df3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildMenuItem: {fileID: 9197481963319205126, guid: 3fbda89b3fa1b4d4ab6aa86571fc60bc,
+    type: 3}
+  buildMenuItemParentName: ScrollContainer
 --- !u!1 &1829496611
 GameObject:
   m_ObjectHideFlags: 0

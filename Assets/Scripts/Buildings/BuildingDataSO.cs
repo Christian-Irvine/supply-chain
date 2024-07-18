@@ -19,6 +19,7 @@ public class BuildingDataSO : ScriptableObject
     public string id;
     public GameObject prefab;
     public int purchaseCost;
+    public Sprite sprite;
     public Vector2Int size;
     public List<FloorType> floorTypes;
 }
