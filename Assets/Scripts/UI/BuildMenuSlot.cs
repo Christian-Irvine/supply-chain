@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.VFX;
 
 /// <summary>
 /// This class is used to put data on the buildings inside of the BuildMenu 
@@ -12,6 +13,7 @@ public class BuildMenuSlot
     public Button button;
     public Label nameLabel;
     public Label costLabel;
+    public VisualElement spriteElement;
 
     public BuildMenuSlot(BuildingDataSO buildingData, VisualTreeAsset template)
     {
@@ -28,6 +30,9 @@ public class BuildMenuSlot
 
         costLabel = buildingButtonContainer.Q<Label>("Cost");
         costLabel.text = $"{buildingData.purchaseCost:C0}";
+
+        spriteElement = buildingButtonContainer.Q<VisualElement>("Sprite");
+        spriteElement.style.backgroundImage = new StyleBackground(buildingData.sprite);
     }
 
     public void OnClick(ClickEvent evt)

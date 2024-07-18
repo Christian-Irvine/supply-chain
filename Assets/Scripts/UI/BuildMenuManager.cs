@@ -14,9 +14,10 @@ public class BuildMenuManager : MonoBehaviour
     private void Awake()
     {
         if (Instance != null && Instance != this) Destroy(this);
+        Instance = this;
     }
 
-    private void OnEnable()
+    public void EnableUI()
     {
         StartCoroutine(LoadMenuSlots());
     }
@@ -24,6 +25,8 @@ public class BuildMenuManager : MonoBehaviour
     private IEnumerator LoadMenuSlots()
     {
         yield return null;
+
+        Debug.Log("Loading Menu Slots!");
 
         UIDocument buildMenu = GetComponent<UIDocument>();
 
@@ -33,10 +36,5 @@ public class BuildMenuManager : MonoBehaviour
 
             buildMenu.rootVisualElement.Q(buildMenuItemParentName).Add(newSlot.button);
         }
-    }
-
-    private void AddInventoryItem()
-    {
-        
     }
 }

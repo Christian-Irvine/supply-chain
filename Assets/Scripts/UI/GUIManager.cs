@@ -37,6 +37,7 @@ public class GUIManager : MonoBehaviour
         
         if (newState)
         {
+            BuildMenuManager.Instance.EnableUI();
             storage.enabled = false;
             ingredientStore.enabled = false;
         }
