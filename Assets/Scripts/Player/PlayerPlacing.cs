@@ -92,7 +92,7 @@ public class PlayerPlacing : MonoBehaviour
         {
             for (int z = bottomLeftPosition.z; z < bottomLeftPosition.z + buildingData.size.y; z++)
             {
-                RaycastHit hit = RaycastGridCell(new Vector3(x, 2, z));
+                RaycastHit hit = RaycastGridCell(new Vector3(x, 3, z));
 
                 if (hit.collider == null) return false;
 
