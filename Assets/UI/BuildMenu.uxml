@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/InventoryType.uss?fileID=7433441132597879392&amp;guid=a7b346dae11394f4d95c32829218338a&amp;type=3#InventoryType" />
+    <ui:VisualElement name="Panel" class="panel" style="flex-grow: 1;">
+        <ui:VisualElement name="OuterContainer" class="outer-container" style="flex-grow: 1;">
+            <ui:VisualElement name="TitleContainer" class="title-container" style="flex-grow: 1; align-items: flex-start;">
+                <ui:Label text="Buildings" class="h1" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemsContainer" class="items-container" style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

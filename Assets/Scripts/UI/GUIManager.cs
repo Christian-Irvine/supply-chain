@@ -27,8 +27,10 @@ public class GUIManager : MonoBehaviour
         hud.enabled = newState;
     }
 
-    private void ToggleBuildMenu()
+    public void ToggleBuildMenu()
     {
+        if (escapeMenu.enabled) return;
+
         bool newState = !buildMenu.isActiveAndEnabled;
 
         buildMenu.enabled = newState;
@@ -40,8 +42,10 @@ public class GUIManager : MonoBehaviour
         }
     }
 
-    private void ToggleStorage()
+    public void ToggleStorageMenu()
     {
+        if (escapeMenu.enabled) return;
+
         bool newState = !storage.isActiveAndEnabled;
 
         storage.enabled = newState;
@@ -53,8 +57,10 @@ public class GUIManager : MonoBehaviour
         }
     }
 
-    private void ToggleIngredientStore()
+    public void ToggleIngredientStoreMenu()
     {
+        if (escapeMenu.enabled) return;
+
         bool newState = !ingredientStore.isActiveAndEnabled;
 
         ingredientStore.enabled = newState;
@@ -66,7 +72,7 @@ public class GUIManager : MonoBehaviour
         }
     }
 
-    private void ToggleEscapeMenu()
+    public void ToggleEscapeMenu()
     {
         bool newState = !escapeMenu.isActiveAndEnabled;
 

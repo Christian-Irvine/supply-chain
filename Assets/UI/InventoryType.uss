@@ -1,0 +1,65 @@
+.panel {
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    -unity-font-definition: url('project://database/Assets/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=9ef46d5005e01fd4e9fbf7c4624b5a83&type=3#NotInter-Regular');
+    -unity-text-align: upper-left;
+    justify-content: center;
+    align-self: auto;
+    align-items: center;
+}
+
+.outer-container {
+    background-color: rgb(233, 233, 212);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 70%;
+    height: 70%;
+    max-height: 70%;
+    min-height: 70%;
+    align-self: auto;
+    align-items: center;
+    max-width: 70%;
+    min-width: 70%;
+    margin-top: 0;
+    justify-content: space-evenly;
+    border-width: 15px;
+    border-color: rgb(221, 179, 80);
+    border-radius: 40px;
+}
+
+.items-container {
+    align-items: flex-start;
+    flex-direction: row;
+    background-color: rgb(233, 233, 212);
+    align-self: auto;
+    top: auto;
+    height: 85%;
+    max-height: 85%;
+    min-height: 85%;
+    width: 95%;
+    max-width: 95%;
+    min-width: 95%;
+    border-width: 15px;
+    border-color: rgb(221, 179, 80);
+    border-radius: 40px;
+    background-color: rgb(236, 229, 177);
+    border-color: rgb(209, 159, 39);
+}
+
+.title-container {
+    background-color: rgba(200, 88, 185, 0);
+    align-self: auto;
+    height: 10%;
+    max-height: 10%;
+    min-height: 10%;
+    align-items: auto;
+    width: 95%;
+}
+
+.h1 {
+    font-size: 1000%;
+    -unity-text-align: middle-left;
+    text-shadow: 5px 5px 0 rgb(166, 161, 151);
+}
