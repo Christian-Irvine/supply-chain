@@ -24,7 +24,10 @@ public class BuildMenuSlot
         button.RegisterCallback<ClickEvent>(OnClick);
 
         nameLabel = buildingButtonContainer.Q<Label>("Name");
+        nameLabel.text = buildingData.name;
+
         costLabel = buildingButtonContainer.Q<Label>("Cost");
+        costLabel.text = $"{buildingData.purchaseCost:C0}";
     }
 
     public void OnClick(ClickEvent evt)

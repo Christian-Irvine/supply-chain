@@ -16,7 +16,12 @@ public class BuildMenuManager : MonoBehaviour
         if (Instance != null && Instance != this) Destroy(this);
     }
 
-    private IEnumerable OnEnable()
+    private void OnEnable()
+    {
+        StartCoroutine(LoadMenuSlots());
+    }
+
+    private IEnumerator LoadMenuSlots()
     {
         yield return null;
 
@@ -25,7 +30,6 @@ public class BuildMenuManager : MonoBehaviour
         foreach (BuildingDataSO building in BuildingManager.Instance.RegisteredBuildings)
         {
             BuildMenuSlot newSlot = new BuildMenuSlot(building, buildMenuSlotTemplate);
-
 
             buildMenu.rootVisualElement.Q(buildMenuItemParentName).Add(newSlot.button);
         }

@@ -1,0 +1,14 @@
+.slot-button {
+    border-radius: 40px;
+    border-color: rgb(221, 179, 80);
+}
+
+.slot-button:hover {
+    background-color: rgb(236, 229, 177);
+    border-color: rgb(209, 159, 39);
+    -unity-text-outline-color: rgba(0, 0, 0, 0);
+    scale: 1.025 1.025;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+    transition-property: scale;
+}
