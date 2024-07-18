@@ -22,6 +22,7 @@ public class BuildMenuManager : MonoBehaviour
     {
         StartCoroutine(LoadMenuSlots());
         document.enabled = true;
+        BuildingManager.Instance.PickedBuilding = null;
     }
 
     public void DisableUI()

@@ -72,10 +72,17 @@ public class BuildingManager : MonoBehaviour
 
     private void UpdateOffsets()
     {
-        EvenOffsets = new Vector3(
-            pickedBuilding.size.x % 2 == 0 ? 0.5f : 0, 
-            0,
-            pickedBuilding.size.y % 2 == 0 ? 0.5f : 0
-        );
+        if (pickedBuilding == null)
+        {
+            EvenOffsets = Vector3.zero;
+        }
+        else
+        {
+            EvenOffsets = new Vector3(
+                pickedBuilding.size.x % 2 == 0 ? 0.5f : 0,
+                0,
+                pickedBuilding.size.y % 2 == 0 ? 0.5f : 0
+            );
+        }
     }
 }

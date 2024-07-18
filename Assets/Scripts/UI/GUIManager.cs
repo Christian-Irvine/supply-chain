@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class GUIManager : MonoBehaviour
@@ -20,15 +21,23 @@ public class GUIManager : MonoBehaviour
         Instance = this;
     }
 
-    private void ToggleHUD()
+    private void Start()
     {
-        bool newState = !hud.isActiveAndEnabled;
+        InputSystem.actions.FindAction("OpenBuildMenu").performed += ctx => ToggleBuildMenu(ctx);
+        InputSystem.actions.FindAction("Escape").performed += ctx => OnEscapePress(ctx);
+    }
 
-        hud.enabled = newState;
+    // Handles the press of the escape button
+    private void OnEscapePress(InputAction.CallbackContext ctx = new InputAction.CallbackContext())
+    {
+        if (escapeMenu.isActiveAndEnabled) ToggleEscapeMenu();
+        else if (BuildingManager.Instance.PickedBuilding != null) BuildingManager.Instance.PickedBuilding = null;
+        else if (buildMenu.isActiveAndEnabled) ToggleBuildMenu();
+        else ToggleEscapeMenu();
     }
 
     // Toggles the select building menu GUI (This is the correct method to do it)
-    public void ToggleBuildMenu()
+    public void ToggleBuildMenu(InputAction.CallbackContext ctx = new InputAction.CallbackContext())
     {
         if (escapeMenu.enabled) return;
 
