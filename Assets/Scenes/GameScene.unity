@@ -1347,10 +1347,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   registeredItems:
-  - {fileID: 11400000, guid: d8e92a8cae3ddfd4da42b9d9007b4dac, type: 2}
+  - {fileID: 11400000, guid: e01bc3ea5951e864e8082e0bc915c7fb, type: 2}
   - {fileID: 11400000, guid: 90d0e97f87601b248860417e72562536, type: 2}
-  - {fileID: 11400000, guid: b6ea55b434ef51e45ae57c018b78c282, type: 2}
   - {fileID: 11400000, guid: 7db69e8384fa7ac49b85ed9a66c24fe1, type: 2}
+  - {fileID: 11400000, guid: b6ea55b434ef51e45ae57c018b78c282, type: 2}
 --- !u!4 &795562431
 Transform:
   m_ObjectHideFlags: 0
@@ -2000,7 +2000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9e6d5d2abe8144bbbc5ecf11bc4df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildMenuItem: {fileID: 9197481963319205126, guid: 3fbda89b3fa1b4d4ab6aa86571fc60bc,
+  buildMenuSlotTemplate: {fileID: 9197481963319205126, guid: 3fbda89b3fa1b4d4ab6aa86571fc60bc,
     type: 3}
   buildMenuItemParentName: ScrollContainer
 --- !u!1 &1829496611
