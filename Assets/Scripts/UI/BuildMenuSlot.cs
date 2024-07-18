@@ -37,6 +37,7 @@ public class BuildMenuSlot
 
     public void OnClick(ClickEvent evt)
     {
-        Debug.Log($"Building {buildingData.displayName} has been selected");
+        BuildingManager.Instance.PickedBuilding = buildingData;
+        BuildMenuManager.Instance.DisableUI();
     }
 }

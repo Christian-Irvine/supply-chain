@@ -27,19 +27,22 @@ public class GUIManager : MonoBehaviour
         hud.enabled = newState;
     }
 
+    // Toggles the select building menu GUI (This is the correct method to do it)
     public void ToggleBuildMenu()
     {
         if (escapeMenu.enabled) return;
 
         bool newState = !buildMenu.isActiveAndEnabled;
-
-        buildMenu.enabled = newState;
         
         if (newState)
         {
             BuildMenuManager.Instance.EnableUI();
             storage.enabled = false;
             ingredientStore.enabled = false;
+        }
+        else
+        {
+            BuildMenuManager.Instance.DisableUI();
         }
     }
 

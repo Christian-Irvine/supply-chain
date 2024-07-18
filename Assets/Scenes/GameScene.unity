@@ -995,7 +995,7 @@ MonoBehaviour:
   rayDistance: 50
   clickRayIgnoreMask:
     serializedVersion: 2
-    m_Bits: 224
+    m_Bits: 192
   tileCheckIgnoreMask:
     serializedVersion: 2
     m_Bits: 160
@@ -2003,6 +2003,7 @@ MonoBehaviour:
   buildMenuSlotTemplate: {fileID: 9197481963319205126, guid: 3fbda89b3fa1b4d4ab6aa86571fc60bc,
     type: 3}
   buildMenuItemParentName: ScrollContainer
+  document: {fileID: 1680257770}
 --- !u!1 &1829496611
 GameObject:
   m_ObjectHideFlags: 0

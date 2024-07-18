@@ -10,6 +10,7 @@ public class BuildMenuManager : MonoBehaviour
     // Visual tree asset is what you use for referencing a UXML file
     [SerializeField] private VisualTreeAsset buildMenuSlotTemplate;
     [SerializeField] private string buildMenuItemParentName;
+    [SerializeField] public UIDocument document;
 
     private void Awake()
     {
@@ -20,6 +21,12 @@ public class BuildMenuManager : MonoBehaviour
     public void EnableUI()
     {
         StartCoroutine(LoadMenuSlots());
+        document.enabled = true;
+    }
+
+    public void DisableUI()
+    {
+        document.enabled = false;
     }
 
     private IEnumerator LoadMenuSlots()
