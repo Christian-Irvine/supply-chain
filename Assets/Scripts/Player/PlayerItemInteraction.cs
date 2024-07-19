@@ -20,8 +20,6 @@ public class PlayerItemInteraction : MonoBehaviour
 
         if (hit.collider == null) return;
 
-        //if (playerItemSlot.WorldItem != null) Debug.Log(playerItemSlot.WorldItem.Item.displayName);
-
         ItemSlot slot = hit.collider.GetComponent<ItemSlot>();
 
         if (slot)
@@ -54,13 +52,10 @@ public class PlayerItemInteraction : MonoBehaviour
 
     private void DepositItems(BuildingInventory buildingInventory)
     {
-        Debug.Log("Depositing item and that item is " + playerItemSlot.WorldItem.Item.displayName);
-
         int index = buildingInventory.InputStacks.FindIndex(stack => stack.Item == playerItemSlot.WorldItem.Item);
 
         if (index != -1)
         {
-            Debug.Log("WRONG");
             buildingInventory.ChangeInputStackCount(playerItemSlot.WorldItem.Item, 1);
             playerItemSlot.DestroyWorldItem();
             playerItemSlot.WorldItem = null;
@@ -69,8 +64,6 @@ public class PlayerItemInteraction : MonoBehaviour
         {
             if (buildingInventory.AddInputStack(playerItemSlot.WorldItem.Item, 1))
             {
-                Debug.Log("RIGHT!");
-
                 playerItemSlot.DestroyWorldItem();
                 playerItemSlot.WorldItem = null;
             }
@@ -79,7 +72,6 @@ public class PlayerItemInteraction : MonoBehaviour
 
     private void TakeItems(BuildingInventory buildingInventory)
     {
-        Debug.Log("Taking items");
         // Takes from output stack if it can exist
         if (buildingInventory.OutputStackAmount > 0)
         {

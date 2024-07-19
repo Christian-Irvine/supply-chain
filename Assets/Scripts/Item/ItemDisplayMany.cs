@@ -23,8 +23,6 @@ public class ItemDisplayMany : MonoBehaviour
 
     private void OnInputStackChange()
     {
-        Debug.Log($"Input Stack Has Changed {buildingInventory.InputStacks.Count}");
-
         if (buildingInventory.InputStacks.Count > 0)
         {
             ItemDataSO newItem = buildingInventory.InputStacks[0].Item;

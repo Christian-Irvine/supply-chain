@@ -27,8 +27,6 @@ public class BuildingInventory : MonoBehaviour
     // Returns wether it was successful at adding a new stack or not
     public bool AddInputStack(ItemDataSO itemData, int count = 1)
     {
-        Debug.Log("New Item Stack is of type " + itemData.displayName);
-
         if (inputStacks.Count < inputStackAmount)
         {
             inputStacks.Add(new ItemStack(itemData, count));
@@ -65,8 +63,6 @@ public class BuildingInventory : MonoBehaviour
 
         if (inputStacks[index].Count <= 0)
         {
-            Debug.Log("Input Stack is 0, removing from existence");
-
             inputStacks.RemoveAt(index);
             InputStackModified?.Invoke();
         }
