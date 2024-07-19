@@ -38,6 +38,6 @@ public class ItemSlot : MonoBehaviour
 
     public void DestroyWorldItem()
     {
-
+        Destroy(WorldItem.gameObject);
     }
 }

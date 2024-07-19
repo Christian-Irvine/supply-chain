@@ -7,19 +7,13 @@ public class ItemDisplayMany : MonoBehaviour
 {
     [SerializeField] private BuildingInventory buildingInventory;
     [SerializeField] private float scaleSize;
-    [SerializeField] private List<Transform> displayPositions;
+    [SerializeField] private List<Transform> displayPositions = new List<Transform>();
     public int MaxCount { get => displayPositions.Count; }
 
     private int activeCount = 0;
-    public int ActiveCount { get => activeCount; set 
-        {
-            activeCount = value;
-            UpdateDisplayCount();
-        } 
-    }
 
     private ItemDataSO currentItem;
-    private List<GameObject> itemModels;
+    private List<GameObject> itemModels = new List<GameObject>();
 
     private void Start()
     {
@@ -29,14 +23,13 @@ public class ItemDisplayMany : MonoBehaviour
 
     private void OnInputStackChange()
     {
+        Debug.Log($"Input Stack Has Changed {buildingInventory.InputStacks.Count}");
+
         if (buildingInventory.InputStacks.Count > 0)
         {
             ItemDataSO newItem = buildingInventory.InputStacks[0].Item;
 
-            if (newItem != currentItem)
-            {
-                ChangeItem(newItem);
-            }
+            ChangeItem(newItem);
         }
     }
 
@@ -44,7 +37,9 @@ public class ItemDisplayMany : MonoBehaviour
     {
         currentItem = newItem;
 
-        itemModels.ForEach(item => Destroy(item));
+        Debug.Log(newItem);
+
+        itemModels.ForEach(item => { Destroy(item); });
         itemModels.Clear();
 
         for (int i = 0; i < MaxCount; i++) 
@@ -62,9 +57,16 @@ public class ItemDisplayMany : MonoBehaviour
 
     private void UpdateDisplayCount()
     {
-        for (int i = 0; i < MaxCount; i++)
+        if (buildingInventory.InputStacks.Count > 0)
         {
-            itemModels[i].SetActive(i < ActiveCount);
+            for (int i = 0; i < itemModels.Count; i++)
+            {
+                itemModels[i].SetActive(i < buildingInventory.InputStacks[0].Count);
+            }
+        }
+        else
+        {
+            itemModels.ForEach (item => item.SetActive(false));
         }
     }
 }

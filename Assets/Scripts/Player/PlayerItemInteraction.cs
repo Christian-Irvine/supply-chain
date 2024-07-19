@@ -20,6 +20,8 @@ public class PlayerItemInteraction : MonoBehaviour
 
         if (hit.collider == null) return;
 
+        //if (playerItemSlot.WorldItem != null) Debug.Log(playerItemSlot.WorldItem.Item.displayName);
+
         ItemSlot slot = hit.collider.GetComponent<ItemSlot>();
 
         if (slot)
@@ -52,17 +54,24 @@ public class PlayerItemInteraction : MonoBehaviour
 
     private void DepositItems(BuildingInventory buildingInventory)
     {
+        Debug.Log("Depositing item and that item is " + playerItemSlot.WorldItem.Item.displayName);
+
         int index = buildingInventory.InputStacks.FindIndex(stack => stack.Item == playerItemSlot.WorldItem.Item);
 
         if (index != -1)
         {
+            Debug.Log("WRONG");
             buildingInventory.ChangeInputStackCount(playerItemSlot.WorldItem.Item, 1);
+            playerItemSlot.DestroyWorldItem();
             playerItemSlot.WorldItem = null;
         }
         else
         {
             if (buildingInventory.AddInputStack(playerItemSlot.WorldItem.Item, 1))
             {
+                Debug.Log("RIGHT!");
+
+                playerItemSlot.DestroyWorldItem();
                 playerItemSlot.WorldItem = null;
             }
         }
@@ -70,13 +79,37 @@ public class PlayerItemInteraction : MonoBehaviour
 
     private void TakeItems(BuildingInventory buildingInventory)
     {
-        if (buildingInventory.OutputStacks.Count > 0)
+        Debug.Log("Taking items");
+        // Takes from output stack if it can exist
+        if (buildingInventory.OutputStackAmount > 0)
         {
-            ItemDataSO item = buildingInventory.OutputStacks[0].Item;
-            buildingInventory.ChangeOutputStackCount(item, -1);
+            if (buildingInventory.OutputStacks.Count > 0)
+            {
+                Debug.Log(buildingInventory.OutputStacks.Count);
+                ItemDataSO item = buildingInventory.OutputStacks[0].Item;
+                Debug.Log(item.displayName);
+                buildingInventory.ChangeOutputStackCount(item, -1);
 
-            // Creates a new world item for the player to hold
-            playerItemSlot.WorldItem = Instantiate(item.worldItem);
+                // Creates a new world item for the player to hold
+                playerItemSlot.WorldItem = Instantiate(item.worldItem);
+                playerItemSlot.WorldItem.Item = item;
+            }
+        }
+        // However if only the input stack can exist the player can take from input. But never if the output can exist and just doesn't (e.g shelves where only input will exist)
+        else
+        {
+            if (buildingInventory.InputStackAmount > 0)
+            {
+                if (buildingInventory.InputStacks.Count > 0)
+                {
+                    ItemDataSO item = buildingInventory.InputStacks[0].Item;
+                    buildingInventory.ChangeInputStackCount(item, -1);
+
+                    // Creates a new world item for the player to hold
+                    playerItemSlot.WorldItem = Instantiate(item.worldItem);
+                    playerItemSlot.WorldItem.Item = item;
+                }
+            }
         }
     }
 
