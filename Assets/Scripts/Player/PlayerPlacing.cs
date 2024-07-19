@@ -18,6 +18,7 @@ public class PlayerPlacing : MonoBehaviour
     [SerializeField] private LayerMask clickRayIgnoreMask;
     [SerializeField] private LayerMask tileCheckIgnoreMask;
     [SerializeField] private GameObject tempCube;
+    [SerializeField] private float raycastHeight;
     private InvalidReason invalidReason;
 
     void Start()
@@ -92,7 +93,7 @@ public class PlayerPlacing : MonoBehaviour
         {
             for (int z = bottomLeftPosition.z; z < bottomLeftPosition.z + buildingData.size.y; z++)
             {
-                RaycastHit hit = RaycastGridCell(new Vector3(x, 3, z));
+                RaycastHit hit = RaycastGridCell(new Vector3(x, raycastHeight, z));
 
                 if (hit.collider == null) return false;
 
@@ -138,7 +139,7 @@ public class PlayerPlacing : MonoBehaviour
     private RaycastHit RaycastGridCell(Vector3 position)
     {
         RaycastHit hit;
-        Physics.Raycast(position, Vector3.down, out hit, 3, ~tileCheckIgnoreMask);
+        Physics.Raycast(position, Vector3.down, out hit, raycastHeight + 2, ~tileCheckIgnoreMask);
         return hit;
     }
 }

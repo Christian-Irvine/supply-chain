@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a359d66c555f1eb4e9ed58e439d49d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxStackSize: 6
   inputStackAmount: 1
   outputStackAmount: 0
   InputStackCountChange:

@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEditor.Progress;
 
 public class BuildingInventory : MonoBehaviour
 {
+    // Leave as -1 if you want to use default stack size in ScriptableObject
+    [SerializeField] private int maxStackSize = -1;
+    public int MaxStackSize { get => maxStackSize; }
+
     [SerializeField] private int inputStackAmount;
     public int InputStackAmount { get => inputStackAmount; }
 
@@ -56,10 +61,13 @@ public class BuildingInventory : MonoBehaviour
 
     public void ChangeInputStackCount(ItemDataSO item, int change)
     {
-
         int index = inputStacks.FindIndex(stack => stack.Item == item);
-        inputStacks[index].Count += change;
 
+        if (index == -1) return;
+
+        int maxStack = maxStackSize < 0 ? item.maxStackSize : maxStackSize;
+
+        inputStacks[index].Count = Mathf.Clamp(inputStacks[index].Count + change, 0, maxStack);
 
         if (inputStacks[index].Count <= 0)
         {
@@ -74,6 +82,8 @@ public class BuildingInventory : MonoBehaviour
     {
         int index = outputStacks.FindIndex(stack => stack.Item == item);
 
+        if (index == -1) return;
+
         outputStacks[index].Count += change;
         
         if (outputStacks[index].Count <= 0)
@@ -83,5 +93,20 @@ public class BuildingInventory : MonoBehaviour
         }
 
         OutputStackCountChange?.Invoke();
+    }
+
+    public int GetMaxStackSize(ItemDataSO item)
+    {
+        return maxStackSize < 0 ? item.maxStackSize : maxStackSize;
+    }
+
+    public ItemStack GetInputStack(ItemDataSO item)
+    {
+        return inputStacks.Find(stack => stack.Item == item);
+    }
+
+    public ItemStack GetOutputStack(ItemDataSO item)
+    {
+        return outputStacks.Find(stack => stack.Item == item);
     }
 }

@@ -34,8 +34,6 @@ public class BuildMenuManager : MonoBehaviour
     {
         yield return null;
 
-        Debug.Log("Loading Menu Slots!");
-
         UIDocument buildMenu = GetComponent<UIDocument>();
 
         foreach (BuildingDataSO building in BuildingManager.Instance.RegisteredBuildings)

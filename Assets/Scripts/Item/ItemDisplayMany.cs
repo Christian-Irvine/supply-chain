@@ -33,8 +33,6 @@ public class ItemDisplayMany : MonoBehaviour
     {
         currentItem = newItem;
 
-        Debug.Log(newItem);
-
         itemModels.ForEach(item => { Destroy(item); });
         itemModels.Clear();
 

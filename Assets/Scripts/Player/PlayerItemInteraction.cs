@@ -56,9 +56,12 @@ public class PlayerItemInteraction : MonoBehaviour
 
         if (index != -1)
         {
-            buildingInventory.ChangeInputStackCount(playerItemSlot.WorldItem.Item, 1);
-            playerItemSlot.DestroyWorldItem();
-            playerItemSlot.WorldItem = null;
+            if (buildingInventory.GetInputStack(playerItemSlot.WorldItem.Item).Count < buildingInventory.GetMaxStackSize(playerItemSlot.WorldItem.Item))
+            {
+                buildingInventory.ChangeInputStackCount(playerItemSlot.WorldItem.Item, 1);
+                playerItemSlot.DestroyWorldItem();
+                playerItemSlot.WorldItem = null;
+            }
         }
         else
         {
