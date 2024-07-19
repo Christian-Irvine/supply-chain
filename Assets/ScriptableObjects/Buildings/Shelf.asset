@@ -17,5 +17,5 @@ MonoBehaviour:
   prefab: {fileID: 7728156280742252501, guid: a54507e54a0147f489d1fb9ddf083f8e, type: 3}
   purchaseCost: 5
   sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  size: {x: 1, y: 1}
+  size: {x: 2, y: 1}
   floorTypes: 01000000
