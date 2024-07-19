@@ -9,7 +9,6 @@ public class BuildingInventory : MonoBehaviour
 {
     // Leave as -1 if you want to use default stack size in ScriptableObject
     [SerializeField] private int maxStackSize = -1;
-    public int MaxStackSize { get => maxStackSize; }
 
     [SerializeField] private int inputStackAmount;
     public int InputStackAmount { get => inputStackAmount; }
