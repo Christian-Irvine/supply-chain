@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ItemDisplayMany : MonoBehaviour
 {
+    [SerializeField] private BuildingInventory buildingInventory;
     [SerializeField] private float scaleSize;
     [SerializeField] private List<Transform> displayPositions;
     public int MaxCount { get => displayPositions.Count; }
@@ -19,6 +20,25 @@ public class ItemDisplayMany : MonoBehaviour
 
     private ItemDataSO currentItem;
     private List<GameObject> itemModels;
+
+    private void Start()
+    {
+        buildingInventory.InputStackModified.AddListener(OnInputStackChange);
+        buildingInventory.InputStackCountChange.AddListener(UpdateDisplayCount);
+    }
+
+    private void OnInputStackChange()
+    {
+        if (buildingInventory.InputStacks.Count > 0)
+        {
+            ItemDataSO newItem = buildingInventory.InputStacks[0].Item;
+
+            if (newItem != currentItem)
+            {
+                ChangeItem(newItem);
+            }
+        }
+    }
 
     public void ChangeItem(ItemDataSO newItem)
     {

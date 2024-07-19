@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// For use on any object that holds a singlular item, like a conveyor, or a table
+/// Holds a world item, this is where the position is set and stays on the object forever
+/// For use on any object that holds a singlular item, like a conveyor, or a table, or the player
 /// </summary>
 public class ItemSlot : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class ItemSlot : MonoBehaviour
         if (hasStartingTestLog)
         {
             WorldItem = Instantiate(ItemManager.Instance.LookupItem("log").worldItem);
-            WorldItem.ItemID = "log";
+            WorldItem.Item = ItemManager.Instance.LookupItem("log");
         }
     }
 
@@ -33,5 +34,10 @@ public class ItemSlot : MonoBehaviour
             worldItem.transform.SetParent(transform, false);
             worldItem.transform.position = defaultItemDisplayPosition.position;
         }
+    }
+
+    public void DestroyWorldItem()
+    {
+
     }
 }

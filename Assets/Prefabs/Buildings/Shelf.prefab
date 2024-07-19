@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 6199879083575317581}
   - component: {fileID: 1054884947528754275}
   - component: {fileID: 6196249710184375622}
-  - component: {fileID: 4482581086239902622}
   - component: {fileID: 1813804932101682651}
+  - component: {fileID: 9017802962489566339}
   m_Layer: 0
   m_Name: Shelf
   m_TagString: Building
@@ -201,20 +201,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 1}
   m_Center: {x: 0.5, y: 1, z: 0}
---- !u!114 &4482581086239902622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7728156280742252501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a7c0b75b29e2684b980be19587feba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultItemDisplayPosition: {fileID: 0}
-  hasStartingTestLog: 0
 --- !u!114 &1813804932101682651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aeaa2b21c611544893aa82cf0dcb088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingInventory: {fileID: 9017802962489566339}
   scaleSize: 0.8
   displayPositions:
   - {fileID: 440170677681085571}
@@ -235,6 +222,32 @@ MonoBehaviour:
   - {fileID: 7315054998607470057}
   - {fileID: 299520756740885013}
   - {fileID: 9197373508078052778}
+--- !u!114 &9017802962489566339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728156280742252501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a359d66c555f1eb4e9ed58e439d49d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputStackAmount: 1
+  outputStackAmount: 0
+  InputStackCountChange:
+    m_PersistentCalls:
+      m_Calls: []
+  OutputStackCountChange:
+    m_PersistentCalls:
+      m_Calls: []
+  InputStackModified:
+    m_PersistentCalls:
+      m_Calls: []
+  OutputStackModified:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7764463710437384416
 GameObject:
   m_ObjectHideFlags: 0

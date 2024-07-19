@@ -1,0 +1,81 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class BuildingInventory : MonoBehaviour
+{
+    [SerializeField] private int inputStackAmount;
+    [SerializeField] private int outputStackAmount;
+
+    private List<ItemStack> inputStacks = new List<ItemStack>();
+    public List<ItemStack> InputStacks { get => inputStacks; }
+
+    private List<ItemStack> outputStacks = new List<ItemStack>();
+    public List<ItemStack> OutputStacks {  get => inputStacks; }
+
+    public UnityEvent InputStackCountChange;
+    public UnityEvent OutputStackCountChange;
+
+    public UnityEvent InputStackModified;
+    public UnityEvent OutputStackModified;
+
+    // Returns wether it was successful at adding a new stack or not
+    public bool AddInputStack(ItemDataSO itemData, int count = 1)
+    {
+        if (inputStacks.Count < inputStackAmount)
+        {
+            inputStacks.Add(new ItemStack(itemData, count));
+            InputStackModified?.Invoke();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    // Returns wether it was successful at adding a new stack or not
+    public bool AddOutputStack(ItemDataSO itemData, int count = 1)
+    {
+        if (outputStacks.Count < outputStackAmount)
+        {
+            outputStacks.Add(new ItemStack(itemData, count));
+            OutputStackModified?.Invoke();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void ChangeInputStackCount(ItemDataSO item, int change)
+    {
+        int index = inputStacks.FindIndex(stack => stack.Item == item);
+        inputStacks[index].Count += change;
+
+        if (inputStacks[index].Count <= 0)
+        {
+            inputStacks.RemoveAt(index);
+            InputStackModified?.Invoke();
+        }
+
+        InputStackCountChange?.Invoke();
+    }
+
+    public void ChangeOutputStackCount(ItemDataSO item, int change)
+    {
+        int index = outputStacks.FindIndex(stack => stack.Item == item);
+        outputStacks[index].Count += change;
+        
+        if (outputStacks[index].Count <= 0)
+        {
+            outputStacks.RemoveAt(index);
+            OutputStackModified?.Invoke();
+        }
+
+        OutputStackCountChange?.Invoke();
+    }
+}
