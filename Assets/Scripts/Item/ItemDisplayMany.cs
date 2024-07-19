@@ -10,8 +10,6 @@ public class ItemDisplayMany : MonoBehaviour
     [SerializeField] private List<Transform> displayPositions = new List<Transform>();
     public int MaxCount { get => displayPositions.Count; }
 
-    private int activeCount = 0;
-
     private ItemDataSO currentItem;
     private List<GameObject> itemModels = new List<GameObject>();
 
