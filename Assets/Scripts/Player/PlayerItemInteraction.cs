@@ -67,6 +67,7 @@ public class PlayerItemInteraction : MonoBehaviour
         {
             if (buildingInventory.AddInputStack(playerItemSlot.WorldItem.Item, 1))
             {
+                Debug.Log(buildingInventory.OutputStacks.Count);
                 playerItemSlot.DestroyWorldItem();
                 playerItemSlot.WorldItem = null;
             }

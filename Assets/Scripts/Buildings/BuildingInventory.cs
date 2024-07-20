@@ -20,7 +20,7 @@ public class BuildingInventory : MonoBehaviour
     public List<ItemStack> InputStacks { get => inputStacks; }
 
     private List<ItemStack> outputStacks = new List<ItemStack>();
-    public List<ItemStack> OutputStacks {  get => inputStacks; }
+    public List<ItemStack> OutputStacks {  get => outputStacks; }
 
     public UnityEvent InputStackCountChange;
     public UnityEvent OutputStackCountChange;

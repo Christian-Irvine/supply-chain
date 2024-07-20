@@ -9,15 +9,4 @@ public class BuildingObject : MonoBehaviour
     
     [SerializeField] private Vector2Int gridPosition;
     public Vector2Int GridPosition { get => gridPosition; set => gridPosition = value; }
-
-
-    void Start()
-    {
-        
-    }
-  
-    void Update()
-    {
-        
-    }
 }

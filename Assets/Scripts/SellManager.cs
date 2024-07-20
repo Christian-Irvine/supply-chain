@@ -47,14 +47,12 @@ public class SellManager : MonoBehaviour
         OfferInventoryToSell randomInventory;
         List<ItemStack> inputStacks;
 
-        int maxAttempts = Mathf.Min(maxSellInventoryIterationAttempts, sellingInventories.Count);
-
         int count = 0;
+        int maxAttempts = Mathf.Min(maxSellInventoryIterationAttempts, sellingInventories.Count);
+        if (maxAttempts == 0) return; 
 
         do
         {
-            Debug.Log(count);
-
             randomInventory = sellingInventories[Random.Range(0, sellingInventories.Count)];
             inputStacks = randomInventory.Inventory.InputStacks;
             if (inputStacks.Count > 0) break;
