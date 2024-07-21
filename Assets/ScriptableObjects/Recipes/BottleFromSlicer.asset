@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d321f106d4e39ab47ab74b4de94d9b14, type: 3}
-  m_Name: PlankInSlicer
+  m_Name: BottleFromSlicer
   m_EditorClassIdentifier: 
-  recipeName: PlankInSlicer
+  recipeName: BottleInSlicer
   inputs:
-  - itemData: {fileID: 11400000, guid: 90d0e97f87601b248860417e72562536, type: 2}
+  - itemData: {fileID: 11400000, guid: 7db69e8384fa7ac49b85ed9a66c24fe1, type: 2}
     count: 1
   outputs:
-  - itemData: {fileID: 11400000, guid: b6ea55b434ef51e45ae57c018b78c282, type: 2}
-    count: 2
+  - itemData: {fileID: 11400000, guid: e01bc3ea5951e864e8082e0bc915c7fb, type: 2}
+    count: 1
   craftSpeed: 1
   craftedInBuilding: {fileID: 11400000, guid: 9e48523bbdc6c384aace6c5dcd339746, type: 2}

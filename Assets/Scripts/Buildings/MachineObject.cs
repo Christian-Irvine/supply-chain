@@ -21,19 +21,11 @@ public class MachineObject : MonoBehaviour
     // An ItemStack being changed to a new ItemStack or null
     private void OnInputItemChange()
     {
-        int itemStacks = inventory.InputStacks.Count;
+        currentRecipe = GetValidRecipe();
 
-        if (itemStacks == 0) 
-        {
-            currentRecipe = null;
-            return;
-        }
+        Debug.Log(currentRecipe.recipeName);
 
-        List<RecipeSO> possibleRecipes = new List<RecipeSO>();
-
-        possibleRecipes = RecipeManager.Instance.RegisteredRecipes.Where(recipe => recipe.inputs.Count == itemStacks && recipe.inputs[0].itemData == inventory.InputStacks[0].Item).ToList();
-
-        Debug.Log(possibleRecipes.Count);
+        if (currentRecipe == null) return;
     }
 
     // The count of an ItemStack changing but remaining the same
@@ -42,5 +34,36 @@ public class MachineObject : MonoBehaviour
 
     }
 
+    private RecipeSO GetValidRecipe()
+    {
+        int itemStacks = inventory.InputStacks.Count;
 
+        if (itemStacks == 0)
+        {
+            return null;
+        }
+
+        List<RecipeSO> possibleRecipes = new List<RecipeSO>();
+
+        // Gets all recipes which has the same amount of slots as the current inventory has filled
+        possibleRecipes = RecipeManager.Instance.RegisteredRecipes.Where(recipe => recipe.inputs.Count == itemStacks).ToList(); //  && recipe.inputs[0].itemData == inventory.InputStacks[0].Item
+
+        foreach (RecipeSO recipe in possibleRecipes)
+        {
+            bool validItem = true;
+
+            foreach (RecipeItem recipeItem in recipe.inputs)
+            {
+                if (!inventory.InputStacks.Any(itemStack => itemStack.Item == recipeItem.itemData))
+                {
+                    validItem = false;
+                    break;
+                }
+            }
+
+            if (validItem) return recipe;
+        }
+
+        return null;
+    }
 }

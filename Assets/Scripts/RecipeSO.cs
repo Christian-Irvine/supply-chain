@@ -16,6 +16,7 @@ public class RecipeItem
 [CreateAssetMenu(fileName = "RecipeSO", menuName = "ScriptableObjects/Recipe", order = 1)]
 public class RecipeSO : ScriptableObject
 {
+    public string recipeName;
     public List<RecipeItem> inputs;
     public List<RecipeItem> outputs;
     public float craftSpeed;
