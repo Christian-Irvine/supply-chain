@@ -52,6 +52,8 @@ public class PlayerItemInteraction : MonoBehaviour
 
     private void DepositItems(BuildingInventory buildingInventory)
     {
+        Debug.Log("Depositing item!");
+
         int index = buildingInventory.InputStacks.FindIndex(stack => stack.Item == playerItemSlot.WorldItem.Item);
 
         if (index != -1)

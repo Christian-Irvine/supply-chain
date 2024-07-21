@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Plank
   id: plank
-  worldItem: {fileID: 0}
+  worldItem: {fileID: 5867516015872712547, guid: 8ec4ec33bcd9dd348a8b51e414ccf0ad,
+    type: 3}
   purchaseCost: 0
   maxStackSize: 2
