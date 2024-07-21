@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.Rendering.CameraUI;
 
 /// <summary>
 /// Class to process a machines items
@@ -91,6 +92,26 @@ public class MachineObject : MonoBehaviour
     // Checks if there is space in the output slot for the current recipe to craft
     private bool CheckOutputSpace()
     {
+        foreach(RecipeItem recipeOutputStack in currentRecipe.outputs)
+        {
+            ItemStack stack = inventory.GetOutputStack(recipeOutputStack.itemData);
+
+            if (stack == null)
+            {
+                if (inventory.OutputStackAmount == inventory.OutputStacks.Count)
+                {
+                    return false;
+                } 
+            }
+            else
+            {
+                if (recipeOutputStack.count + stack.Count > inventory.GetMaxStackSize(stack.Item))
+                {
+                    return false;
+                }
+            }
+        }
+
         return true;
     }
 
