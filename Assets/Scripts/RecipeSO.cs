@@ -17,8 +17,8 @@ public class RecipeItem
 public class RecipeSO : ScriptableObject
 {
     public string recipeName;
-    public List<RecipeItem> inputs;
-    public List<RecipeItem> outputs;
+    public List<RecipeItem> inputs = new List<RecipeItem>();
+    public List<RecipeItem> outputs = new List<RecipeItem>();
     public float craftSpeed;
     public BuildingDataSO craftedInBuilding;
 }

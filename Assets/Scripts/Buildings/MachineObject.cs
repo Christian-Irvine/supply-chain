@@ -117,9 +117,40 @@ public class MachineObject : MonoBehaviour
         Debug.Log("Crafting!");
 
         yield return new WaitForSeconds(currentRecipe.craftSpeed / craftSpeed);
+        ChangeCraftItems();
         isCrafting = false;
-        Debug.Log("Crafted new item");
 
+        // Tries to craft again if possible
         TryCraft();
+    }
+
+    private void ChangeCraftItems()
+    {
+        RecipeSO craftedRecipe = currentRecipe;
+
+        // Removing items from inputs
+        craftedRecipe.inputs.ForEach(input => 
+        {
+            inventory.ChangeInputStackCount(input.itemData, -input.count);
+        });
+
+        Debug.Log(craftedRecipe.outputs);
+
+        // Adding items to outputs
+        craftedRecipe.outputs.ForEach(output =>
+        {
+            ItemStack stack = inventory.GetOutputStack(output.itemData);
+
+            if (stack != null)
+            {
+                inventory.ChangeOutputStackCount(stack.Item, output.count);
+            }
+            else
+            {
+                inventory.AddOutputStack(output.itemData, output.count);
+            }
+        });
+
+        Debug.Log("Crafted new items");
     }
 }
