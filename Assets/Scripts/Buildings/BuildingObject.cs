@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BuildingObject : MonoBehaviour
 {
-    [SerializeField] private string buildingID;
-    public string BuildingID {  get => buildingID; set => buildingID = value; }
+    [SerializeField] private BuildingDataSO building;
+    public BuildingDataSO BuildingID {  get => building; set => building = value; }
     
     [SerializeField] private Vector2Int gridPosition;
     public Vector2Int GridPosition { get => gridPosition; set => gridPosition = value; }
