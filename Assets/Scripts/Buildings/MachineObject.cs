@@ -20,6 +20,9 @@ public class MachineObject : MonoBehaviour
     {
         inventory.InputStackModified.AddListener(OnInputItemChange);
         inventory.InputStackCountChange.AddListener(OnInputCountChange);
+
+        inventory.OutputStackModified.AddListener(OnOutputChange);
+        inventory.OutputStackCountChange.AddListener(OnOutputChange);
     }
 
     // An ItemStack being changed to a new ItemStack or null
@@ -39,6 +42,12 @@ public class MachineObject : MonoBehaviour
     {
         recipeCountValid = CheckRecipeCount();
 
+        TryCraft();
+    }
+
+    // The output changing in any way
+    private void OnOutputChange()
+    {
         TryCraft();
     }
 
