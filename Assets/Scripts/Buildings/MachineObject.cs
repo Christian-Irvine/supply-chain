@@ -9,8 +9,11 @@ using UnityEngine;
 public class MachineObject : MonoBehaviour
 {
     [SerializeField] private BuildingInventory inventory;
+    [Tooltip("Bigger number is faster"), SerializeField] private float craftSpeed;
 
     private RecipeSO currentRecipe;
+    private bool recipeCountValid;
+    private bool isCrafting = false;
 
     void Start()
     {
@@ -23,15 +26,19 @@ public class MachineObject : MonoBehaviour
     {
         currentRecipe = GetValidRecipe();
 
-        Debug.Log(currentRecipe.recipeName);
-
         if (currentRecipe == null) return;
+
+        recipeCountValid = CheckRecipeCount();
+
+        TryCraft();
     }
 
     // The count of an ItemStack changing but remaining the same
     private void OnInputCountChange()
     {
+        recipeCountValid = CheckRecipeCount();
 
+        TryCraft();
     }
 
     private RecipeSO GetValidRecipe()
@@ -65,5 +72,54 @@ public class MachineObject : MonoBehaviour
         }
 
         return null;
+    }
+
+    private bool CheckRecipeCount()
+    {
+        if (currentRecipe == null) return false;
+
+        foreach (RecipeItem recipeItem in currentRecipe.inputs)
+        {
+            ItemStack inventoryStack = inventory.GetInputStack(recipeItem.itemData); // inventory.InputStacks.Find(itemStack => itemStack.Item == recipeItem.itemData
+
+            if (inventoryStack.Count < recipeItem.count) return false;
+        }
+
+        return true;
+    }
+
+    // Checks if there is space in the output slot for the current recipe to craft
+    private bool CheckOutputSpace()
+    {
+        return true;
+    }
+
+    private void TryCraft()
+    {
+        if (!recipeCountValid || currentRecipe == null || !CheckOutputSpace())
+        {
+            // Cancelling the craft because it is invalid
+            if (isCrafting)
+            {
+                StopCoroutine(CraftItem());
+            }
+            return;
+        }
+        // Returning because craft is already going on and is still valid
+        if (isCrafting) return;
+
+        StartCoroutine(CraftItem());
+    }
+
+    private IEnumerator CraftItem()
+    {
+        isCrafting = true;
+        Debug.Log("Crafting!");
+
+        yield return new WaitForSeconds(currentRecipe.craftSpeed / craftSpeed);
+        isCrafting = false;
+        Debug.Log("Crafted new item");
+
+        TryCraft();
     }
 }
