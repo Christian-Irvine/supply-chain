@@ -68,6 +68,6 @@ public class SellManager : MonoBehaviour
 
         randomInventory.Inventory.ChangeInputStackCount(item, -1);
 
-        GameManager.Instance.Money += item.purchaseCost;
+        GameManager.Instance.Money += item.value;
     }
 }

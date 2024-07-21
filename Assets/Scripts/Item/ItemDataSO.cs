@@ -12,6 +12,6 @@ public class ItemDataSO : ScriptableObject
     public string id;
     public ItemObject worldItem;
     [Tooltip("The cost to buy if item is purchaseable as a raw ingredient")] 
-    public int purchaseCost;
+    public int value;
     public int maxStackSize = 2;
 }

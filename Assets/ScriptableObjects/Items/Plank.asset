@@ -16,5 +16,5 @@ MonoBehaviour:
   id: plank
   worldItem: {fileID: 5867516015872712547, guid: 8ec4ec33bcd9dd348a8b51e414ccf0ad,
     type: 3}
-  purchaseCost: 0
+  value: 10
   maxStackSize: 2

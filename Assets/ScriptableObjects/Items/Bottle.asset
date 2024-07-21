@@ -15,5 +15,5 @@ MonoBehaviour:
   displayName: Bottle
   id: bottle
   worldItem: {fileID: 0}
-  purchaseCost: 3
+  value: 3
   maxStackSize: 2

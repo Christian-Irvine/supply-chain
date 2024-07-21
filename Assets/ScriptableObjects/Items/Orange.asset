@@ -15,5 +15,5 @@ MonoBehaviour:
   displayName: Orange
   id: orange
   worldItem: {fileID: 0}
-  purchaseCost: 2
+  value: 5
   maxStackSize: 2
