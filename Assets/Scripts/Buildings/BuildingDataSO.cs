@@ -21,5 +21,6 @@ public class BuildingDataSO : ScriptableObject
     public int purchaseCost;
     public Sprite sprite;
     public Vector2Int size;
+    public bool isRotatable;
     public List<FloorType> floorTypes;
 }

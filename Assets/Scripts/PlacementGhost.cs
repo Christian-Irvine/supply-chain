@@ -30,4 +30,9 @@ public class PlacementGhost : MonoBehaviour
     {
         meshRenderer.material = validity ? validMaterial : invalidMaterial;
     }
+
+    public void SetRotation(BuildingFacing facing)
+    {
+        transform.rotation = Quaternion.Euler(0, (int)facing * 90, 0);
+    }
 }

@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements.Experimental;
 
 public class PlayerPlacing : MonoBehaviour
 {
@@ -19,29 +21,44 @@ public class PlayerPlacing : MonoBehaviour
     [SerializeField] private LayerMask tileCheckIgnoreMask;
     [SerializeField] private GameObject tempCube;
     [SerializeField] private float raycastHeight;
-    private InvalidReason invalidReason;
+    private BuildingFacing currentFacing = BuildingFacing.forward;
+    private InvalidReason invalidReason = InvalidReason.None;
 
     void Start()
     {
         InputSystem.actions.FindAction("Place").performed += ctx => OnClick(ctx);
+        InputSystem.actions.FindAction("Rotate").performed += ctx => Rotate(ctx);
     }
 
     private void FixedUpdate()
     {
         if (BuildingManager.Instance.PickedBuilding == null) return;
 
+        if (!BuildingManager.Instance.PickedBuilding.isRotatable) currentFacing = BuildingFacing.forward;
+
         RaycastHit hit = CheckPlacementRaycast();
 
         if (hit.collider != null)
         {
-            Vector3 hitGridPos = GridManager.Instance.GridToWorldPosition(new Vector3(hit.point.x, 0, hit.point.z) - BuildingManager.Instance.EvenOffsets);
-            PlacementGhost.Instance.GhostModel.gameObject.SetActive(true);
-            Vector3 ghostPos = new Vector3(hit.point.x, 0, hit.point.z) - BuildingManager.Instance.EvenOffsets;
-            PlacementGhost.Instance.gameObject.transform.position = GridManager.Instance.GridToWorldPosition(ghostPos) + BuildingManager.Instance.EvenOffsets;
+            Vector3 rotatedOffsets = BuildingManager.Instance.EvenOffsets;
 
-            bool placementValid = CanPlaceStructure(hitGridPos, BuildingManager.Instance.PickedBuilding);
+            // Reverses the size if the rotation is left or right
+            if (((int)currentFacing) % 2 != 0)
+            {
+                rotatedOffsets = new Vector3(rotatedOffsets.z, rotatedOffsets.y, rotatedOffsets.x);
+            }
+
+            Vector3 hitGridPos = GridManager.Instance.GridToWorldPosition(new Vector3(hit.point.x, 0, hit.point.z) - rotatedOffsets);
+            PlacementGhost.Instance.GhostModel.gameObject.SetActive(true);
+            Vector3 ghostPos = new Vector3(hit.point.x, 0, hit.point.z) - rotatedOffsets;
+            PlacementGhost.Instance.gameObject.transform.position = GridManager.Instance.GridToWorldPosition(ghostPos) + rotatedOffsets;
+
+            PlacementGhost.Instance.SetRotation(currentFacing);
+
+            bool placementValid = CanPlaceStructure(hitGridPos, BuildingManager.Instance.PickedBuilding, currentFacing);
 
             PlacementGhost.Instance.SetValidity(placementValid);
+            //Debug.Log("ghost: " + ghostPos);
         }
         else
         {
@@ -62,14 +79,46 @@ public class PlayerPlacing : MonoBehaviour
         RaycastHit hit = CheckPlacementRaycast();
         if (hit.collider == null) return;
 
+        Vector3 rotatedOffsets = BuildingManager.Instance.EvenOffsets;
 
-
-        Vector3 hitGridPos = GridManager.Instance.GridToWorldPosition(new Vector3(hit.point.x, 0, hit.point.z) - BuildingManager.Instance.EvenOffsets);
-
-        if (CanPlaceStructure(hitGridPos, buildingData))
+        // Reverses the size if the rotation is left or right
+        if (((int)currentFacing) % 2 != 0) // odd number
         {
-            GridManager.Instance.PlaceBuilding(prefab, new Vector3(hit.point.x, 0, hit.point.z) - BuildingManager.Instance.EvenOffsets);
+            rotatedOffsets = new Vector3(rotatedOffsets.z, rotatedOffsets.y, rotatedOffsets.x);
         }
+        
+        // This needs to be done before 1 and 2 are direction flipped or else position checking breaks
+        Vector3 placementCheckingGridPos = GridManager.Instance.GridToWorldPosition(new Vector3(hit.point.x, 0, hit.point.z) - rotatedOffsets);
+        
+        if (((int)currentFacing) == 1 || (int)currentFacing == 2) // 1 and 2
+        {
+            rotatedOffsets = new Vector3(rotatedOffsets.x * -1, rotatedOffsets.y, rotatedOffsets.z * -1);
+        }
+
+        if (!buildingData.isRotatable) currentFacing = BuildingFacing.forward;
+
+        if (CanPlaceStructure(placementCheckingGridPos, buildingData, currentFacing))
+        {
+            Debug.Log("Place Position: " + (new Vector3(hit.point.x, 0, hit.point.z) - rotatedOffsets));
+
+            GridManager.Instance.PlaceBuilding(prefab, new Vector3(hit.point.x, 0, hit.point.z) - rotatedOffsets, rotatedOffsets, currentFacing); // - rotatedOffsets
+        }
+    }
+
+    private void Rotate(InputAction.CallbackContext ctx)
+    {
+        BuildingDataSO buildingData = BuildingManager.Instance.PickedBuilding;
+
+        if (buildingData == null) return;
+        if (!buildingData.isRotatable)
+        {
+            currentFacing = BuildingFacing.forward;
+            return;
+        }
+
+        currentFacing = (BuildingFacing)((((int)currentFacing) + 1) % 4);
+
+        Debug.Log(currentFacing);
     }
 
     /// <summary>
@@ -85,13 +134,21 @@ public class PlayerPlacing : MonoBehaviour
         return hit;
     }
 
-    private bool CanPlaceStructure(Vector3 centreGridPosition, BuildingDataSO buildingData)
+    private bool CanPlaceStructure(Vector3 centreGridPosition, BuildingDataSO buildingData, BuildingFacing facing)
     {
-        Vector3Int bottomLeftPosition = GetBottomLeftPosition(centreGridPosition, buildingData.size);
+        Vector3Int bottomLeftPosition = GetBottomLeftPosition(centreGridPosition, buildingData.size, facing);
 
-        for (int x = bottomLeftPosition.x; x < bottomLeftPosition.x + buildingData.size.x; x++)
+        Vector2Int newSize = buildingData.size;
+
+        // Reverses the size if the rotation is left or right
+        if (((int)facing) % 2 != 0)
         {
-            for (int z = bottomLeftPosition.z; z < bottomLeftPosition.z + buildingData.size.y; z++)
+            newSize = new Vector2Int(newSize.y, newSize.x);
+        }
+
+        for (int x = bottomLeftPosition.x; x < bottomLeftPosition.x + newSize.x; x++)
+        {
+            for (int z = bottomLeftPosition.z; z < bottomLeftPosition.z + newSize.y; z++)
             {
                 RaycastHit hit = RaycastGridCell(new Vector3(x, raycastHeight, z));
 
@@ -120,12 +177,20 @@ public class PlayerPlacing : MonoBehaviour
         // Instantiate(tempCube, new Vector3(x, 0, z), Quaternion.identity);
     }
 
-    private Vector3Int GetBottomLeftPosition(Vector3 centreGridPosition, Vector2Int size)
+    private Vector3Int GetBottomLeftPosition(Vector3 centreGridPosition, Vector2Int size, BuildingFacing facing)
     {
+        Vector2Int newSize = size;
+
+        // Reverses the size if the rotation is left or right
+        if (((int)facing) % 2 != 0)
+        {
+            newSize = new Vector2Int(newSize.y, newSize.x);
+        }
+
         Vector3Int bottomLeftPosition = new Vector3Int(
-            GetBottomLeftNumber(Mathf.RoundToInt(centreGridPosition.x), size.x),
+            GetBottomLeftNumber(Mathf.RoundToInt(centreGridPosition.x), newSize.x),
             Mathf.RoundToInt(centreGridPosition.y),
-            GetBottomLeftNumber(Mathf.RoundToInt(centreGridPosition.z), size.y)
+            GetBottomLeftNumber(Mathf.RoundToInt(centreGridPosition.z), newSize.y)
         );
 
         return bottomLeftPosition;
