@@ -68,6 +68,7 @@ public class PlayerPlacing : MonoBehaviour
         // Set text for invalidity based on invalidReason variable
     }
 
+    // Tries to place something when mouse is clicked. I'll be honest I don't know how it works this entire placing system could do with restarting
     private void OnClick(InputAction.CallbackContext ctx)
     {
         BuildingDataSO buildingData = BuildingManager.Instance.PickedBuilding;
@@ -87,9 +88,10 @@ public class PlayerPlacing : MonoBehaviour
             rotatedOffsets = new Vector3(rotatedOffsets.z, rotatedOffsets.y, rotatedOffsets.x);
         }
         
-        // This needs to be done before 1 and 2 are direction flipped or else position checking breaks
+        // This needs to be done before 1 and 2 are direction flipped but after its reversed so don't move it
         Vector3 placementCheckingGridPos = GridManager.Instance.GridToWorldPosition(new Vector3(hit.point.x, 0, hit.point.z) - rotatedOffsets);
         
+        // Flipping the offsets if its facing right, or backward (It is necessary despite not knowing why)
         if (((int)currentFacing) == 1 || (int)currentFacing == 2) // 1 and 2
         {
             rotatedOffsets = new Vector3(rotatedOffsets.x * -1, rotatedOffsets.y, rotatedOffsets.z * -1);
