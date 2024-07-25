@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxStackSize: -1
-  inputStackAmount: 2
-  outputStackAmount: 2
+  inputStackAmount: 1
+  outputStackAmount: 1
   InputStackCountChange:
     m_PersistentCalls:
       m_Calls: []
@@ -196,4 +196,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 2791745047011484069}
-  craftSpeed: 0.5
+  craftSpeed: 1

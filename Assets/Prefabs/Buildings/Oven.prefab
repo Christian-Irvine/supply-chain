@@ -96,6 +96,8 @@ GameObject:
   - component: {fileID: 6199879083575317581}
   - component: {fileID: 1054884947528754275}
   - component: {fileID: 6196249710184375622}
+  - component: {fileID: 6765448377044357488}
+  - component: {fileID: 5542455087220905903}
   m_Layer: 0
   m_Name: Oven
   m_TagString: Building
@@ -131,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932d83a6b286c5a44967395d4493031d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingID: oven
+  building: {fileID: 0}
   gridPosition: {x: 0, y: 0}
 --- !u!65 &6196249710184375622
 BoxCollider:
@@ -154,3 +156,44 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 1.5, z: 3}
   m_Center: {x: 0, y: 0.75, z: 0}
+--- !u!114 &6765448377044357488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728156280742252501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a359d66c555f1eb4e9ed58e439d49d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStackSize: -1
+  inputStackAmount: 1
+  outputStackAmount: 1
+  InputStackCountChange:
+    m_PersistentCalls:
+      m_Calls: []
+  OutputStackCountChange:
+    m_PersistentCalls:
+      m_Calls: []
+  InputStackModified:
+    m_PersistentCalls:
+      m_Calls: []
+  OutputStackModified:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5542455087220905903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728156280742252501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2787bc58ec7c44fbaf246447cedb82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 6765448377044357488}
+  craftSpeed: 1
