@@ -68,7 +68,7 @@ public class PlayerPlacing : MonoBehaviour
         // Set text for invalidity based on invalidReason variable
     }
 
-    // Tries to place something when mouse is clicked. I'll be honest I don't know how it works this entire placing system could do with restarting
+    // Tries to place something when mouse is clicked. I don't know how it works this entire placing system could do with restarting escpecially this method (please commit before you do)
     private void OnClick(InputAction.CallbackContext ctx)
     {
         BuildingDataSO buildingData = BuildingManager.Instance.PickedBuilding;
@@ -107,6 +107,7 @@ public class PlayerPlacing : MonoBehaviour
         }
     }
 
+    // Changes the currentFacing value when rotated
     private void Rotate(InputAction.CallbackContext ctx)
     {
         BuildingDataSO buildingData = BuildingManager.Instance.PickedBuilding;
