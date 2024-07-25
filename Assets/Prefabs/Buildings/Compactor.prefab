@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932d83a6b286c5a44967395d4493031d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  building: {fileID: 0}
+  buildingData: {fileID: 11400000, guid: 0bc0d29561f90aa47a9a0c63824e7cbf, type: 2}
   gridPosition: {x: 0, y: 0}
 --- !u!65 &1400837389853159031
 BoxCollider:
@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 809301994908681282}
+  building: {fileID: 2577634915703117012}
   craftSpeed: 1
 --- !u!1 &3299058848615070610
 GameObject:

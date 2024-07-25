@@ -10,6 +10,7 @@ using static UnityEditor.Rendering.CameraUI;
 public class MachineObject : MonoBehaviour
 {
     [SerializeField] private BuildingInventory inventory;
+    [SerializeField] private BuildingObject building;
     [Tooltip("Bigger number is faster"), SerializeField] private float craftSpeed;
 
     private RecipeSO currentRecipe;
@@ -63,7 +64,7 @@ public class MachineObject : MonoBehaviour
         List<RecipeSO> possibleRecipes = new List<RecipeSO>();
 
         // Gets all recipes which has the same amount of slots as the current inventory has filled
-        possibleRecipes = RecipeManager.Instance.RegisteredRecipes.Where(recipe => recipe.inputs.Count == itemStacks).ToList(); //  && recipe.inputs[0].itemData == inventory.InputStacks[0].Item
+        possibleRecipes = RecipeManager.Instance.RegisteredRecipes.Where(recipe => recipe.inputs.Count == itemStacks && building.BuildingData == recipe.craftedInBuilding).ToList(); //  && recipe.inputs[0].itemData == inventory.InputStacks[0].Item
 
         foreach (RecipeSO recipe in possibleRecipes)
         {
@@ -164,7 +165,7 @@ public class MachineObject : MonoBehaviour
             inventory.ChangeInputStackCount(input.itemData, -input.count);
         });
 
-        Debug.Log(craftedRecipe.outputs);
+        //Debug.Log(craftedRecipe.outputs);
 
         // Adding items to outputs
         craftedRecipe.outputs.ForEach(output =>
