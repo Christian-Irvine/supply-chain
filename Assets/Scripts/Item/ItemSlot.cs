@@ -13,6 +13,9 @@ public class ItemSlot : MonoBehaviour
     [SerializeField] private bool setNewItemDetails = true;
     [SerializeField] private bool hasStartingTestLog = false;
 
+    [SerializeField] private bool canBePulledFrom = true;
+    public bool CanBePulledFrom { get => canBePulledFrom; }
+
     public ItemObject WorldItem { get => worldItem; set {
             worldItem = value;
             if (setNewItemDetails) SetupWorldItem();
@@ -40,6 +43,7 @@ public class ItemSlot : MonoBehaviour
     public void DestroyWorldItem()
     {
         Destroy(WorldItem.gameObject);
+        worldItem = null;
     }
 
     public void CreateWorldItem(ItemDataSO item, bool setupItem = false)

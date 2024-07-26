@@ -120,4 +120,24 @@ public class BuildingInventory : MonoBehaviour
     {
         return outputStacks.Find(stack => stack.Item == item);
     }
+
+    public bool TryAddItemToInput(ItemDataSO item, int count = 1)
+    {
+        ItemStack stack = GetInputStack(item);
+
+        if (stack == null)
+        {
+            //If it doesn't exist but inputs are full
+            if (InputStacks.Count == inputStackAmount) return false;
+
+            AddInputStack(item, count);
+            return true;
+        }
+        // If stack exists but is full or will be over full
+        if (stack.Count + count >= GetMaxStackSize(item)) return false;
+        
+        //If stack exists but isn't full or won't be when item is added
+        ChangeInputStackCount(item, count);
+        return true;
+    }
 }

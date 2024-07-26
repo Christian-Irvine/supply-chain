@@ -38,10 +38,16 @@ public class Conveyor : MonoBehaviour
         TickCooldown();
 
         if (cooldown != 0) return;
+        if (itemSlot.WorldItem == null) return;
 
         if (pushInventory != null) 
         {
-            
+            if (pullInventory.TryAddItemToInput(itemSlot.WorldItem.Item))
+            {
+                // Pushing item into machine
+                itemSlot.DestroyWorldItem();
+                Debug.Log("Pushing into inventory!");
+            }
         }
         if (pushSlot != null)
         {
@@ -73,7 +79,10 @@ public class Conveyor : MonoBehaviour
         }
         if (pullSlot != null)
         {
+            // This is what is used to stop belts from pulling from other belts (they can only push onto other belts)
+            if (!pullSlot.CanBePulledFrom) return;
 
+            // Pull from item slots
         }
     }
 
