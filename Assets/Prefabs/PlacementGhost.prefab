@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2520569086462727999}
   - component: {fileID: 3831692187286304001}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlacementGhost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 7846214166099260683}
   - component: {fileID: 6974344688819538879}
   - component: {fileID: 34988267480392461}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,6 +109,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

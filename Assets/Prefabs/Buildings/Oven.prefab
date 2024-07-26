@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7244420514973303249}
   - component: {fileID: 7183541135412419616}
   - component: {fileID: 7772737161563278375}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 6196249710184375622}
   - component: {fileID: 6765448377044357488}
   - component: {fileID: 5542455087220905903}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Oven
   m_TagString: Building
   m_Icon: {fileID: 0}
@@ -133,8 +133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932d83a6b286c5a44967395d4493031d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpdateNeighbors:
+    m_PersistentCalls:
+      m_Calls: []
   buildingData: {fileID: 11400000, guid: ce17fd76abbc340419181039fb4c5a23, type: 2}
-  gridPosition: {x: 0, y: 0}
+  gridPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &6196249710184375622
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -101,8 +101,6 @@ public class PlayerPlacing : MonoBehaviour
 
         if (CanPlaceStructure(placementCheckingGridPos, buildingData, currentFacing))
         {
-            Debug.Log("Place Position: " + (new Vector3(hit.point.x, 0, hit.point.z) - rotatedOffsets));
-
             GridManager.Instance.PlaceBuilding(prefab, new Vector3(hit.point.x, 0, hit.point.z) - rotatedOffsets, rotatedOffsets, currentFacing); // - rotatedOffsets
         }
     }

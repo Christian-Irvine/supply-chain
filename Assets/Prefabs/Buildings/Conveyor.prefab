@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4275896747324519539}
   - component: {fileID: 7008807479644277249}
   - component: {fileID: -7386080118372049021}
-  m_Layer: 8
+  - component: {fileID: 5061427149435852385}
+  m_Layer: 10
   m_Name: Conveyor
   m_TagString: Building
   m_Icon: {fileID: 0}
@@ -69,7 +70,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932d83a6b286c5a44967395d4493031d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpdateNeighbors:
+    m_PersistentCalls:
+      m_Calls: []
   buildingData: {fileID: 11400000, guid: 8a3d6a02f5c842f41a7c172cd48ddeef, type: 2}
+  gridPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &-7386080118372049021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +89,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultItemDisplayPosition: {fileID: 723119627394834461}
   hasStartingTestLog: 0
+--- !u!114 &5061427149435852385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230126222353063344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9343cba48457e45b3d05174fb6ecc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSlot: {fileID: -7386080118372049021}
+  buildingObject: {fileID: 7008807479644277249}
 --- !u!1 &2775997941415281397
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 723119627394834461}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: ItemPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +145,7 @@ GameObject:
   - component: {fileID: 8841781709650721488}
   - component: {fileID: 268885782334701065}
   - component: {fileID: 2114158069766162064}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Arrow2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +230,7 @@ GameObject:
   - component: {fileID: 1854194684071391561}
   - component: {fileID: 930767660138124770}
   - component: {fileID: 2660509750183697960}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +317,7 @@ GameObject:
   - component: {fileID: 5733176448082074270}
   - component: {fileID: 322218224752548528}
   - component: {fileID: 7456262230936392997}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

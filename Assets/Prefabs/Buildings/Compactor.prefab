@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1400837389853159031}
   - component: {fileID: 809301994908681282}
   - component: {fileID: -6971203554952591997}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Compactor
   m_TagString: Building
   m_Icon: {fileID: 0}
@@ -48,8 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932d83a6b286c5a44967395d4493031d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpdateNeighbors:
+    m_PersistentCalls:
+      m_Calls: []
   buildingData: {fileID: 11400000, guid: 0bc0d29561f90aa47a9a0c63824e7cbf, type: 2}
-  gridPosition: {x: 0, y: 0}
+  gridPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &1400837389853159031
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -124,7 +127,7 @@ GameObject:
   - component: {fileID: 4151053981466061576}
   - component: {fileID: 3532097953231562246}
   - component: {fileID: 230453261968608832}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

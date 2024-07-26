@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 104557837}
   - component: {fileID: 104557836}
   - component: {fileID: 104557835}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FactoryFloor
   m_TagString: FactoryFloor
   m_Icon: {fileID: 0}
@@ -577,6 +577,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 397283267}
+  inverseNeighborMask:
+    serializedVersion: 2
+    m_Bits: 752
 --- !u!156049354 &397283267
 Grid:
   m_ObjectHideFlags: 0
@@ -1313,7 +1316,7 @@ GameObject:
   - component: {fileID: 642077657}
   - component: {fileID: 642077656}
   - component: {fileID: 642077655}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FactoryFloor (1)
   m_TagString: StoreFloor
   m_Icon: {fileID: 0}
@@ -2213,7 +2216,7 @@ GameObject:
   - component: {fileID: 1101427432}
   - component: {fileID: 1101427431}
   - component: {fileID: 1101427430}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}

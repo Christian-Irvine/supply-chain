@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 299520756740885013}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Position5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7315054998607470057}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Position4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9197373508078052778}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Position6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8619547073597283101}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Position3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 1813804932101682651}
   - component: {fileID: 9017802962489566339}
   - component: {fileID: 4933185050298727769}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shelf
   m_TagString: Building
   m_Icon: {fileID: 0}
@@ -179,8 +179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932d83a6b286c5a44967395d4493031d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpdateNeighbors:
+    m_PersistentCalls:
+      m_Calls: []
   buildingData: {fileID: 11400000, guid: 49369caaafcbcb6489beecadfb9af9e6, type: 2}
-  gridPosition: {x: 0, y: 0}
+  gridPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &6196249710184375622
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -272,7 +275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 440170677681085571}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Position1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3535207016816571800}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Position2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,6 +390,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shelf01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e7987ae217c77024e87716e0461c50d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
