@@ -10,6 +10,7 @@ public class ItemSlot : MonoBehaviour
 {
     private ItemObject worldItem;
     [SerializeField] private Transform defaultItemDisplayPosition;
+    public Transform DefaultItemDisplayPosition {  get => defaultItemDisplayPosition; }
     [SerializeField] private bool setNewItemDetails = true;
     [SerializeField] private bool hasStartingTestLog = false;
 
@@ -19,6 +20,7 @@ public class ItemSlot : MonoBehaviour
     public ItemObject WorldItem { get => worldItem; set {
             worldItem = value;
             if (setNewItemDetails) SetupWorldItem();
+            else if (worldItem != null) worldItem.transform.SetParent(transform, true);
         }
     }
 
@@ -50,6 +52,7 @@ public class ItemSlot : MonoBehaviour
     {
         WorldItem = Instantiate(item.worldItem);
         WorldItem.Item = item;
+        WorldItem.transform.SetParent(transform, false);
         // Checks if setNewItemDetails is false because it would do it anyway if its true
         if (setupItem && !setNewItemDetails) SetupWorldItem();
     }

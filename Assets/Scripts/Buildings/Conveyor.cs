@@ -16,7 +16,12 @@ public class Conveyor : MonoBehaviour
     [SerializeField] private BuildingInventory pullInventory;
     [SerializeField] private ItemSlot pullSlot;
 
+    // This will be replaced later on when the system actually exists (in the optimization phase)
+    private bool isOnScreen = true;
+
     private int maxTickCooldown;
+
+    private Vector3 itemLocalStartPosition = Vector3.zero;
 
     private IEnumerator Start()
     {
@@ -53,7 +58,10 @@ public class Conveyor : MonoBehaviour
         {
             if (pushSlot.WorldItem != null) return;
 
+            if (itemSlot.WorldItem.LastMoveTick == tickCount) return;
+
             pushSlot.WorldItem = itemSlot.WorldItem;
+            pushSlot.WorldItem.LastMoveTick = tickCount;
             itemSlot.WorldItem = null;
         }
     }
@@ -65,7 +73,7 @@ public class Conveyor : MonoBehaviour
 
         if (itemSlot.WorldItem != null)
         {
-            UpdateItemPosition();
+            UpdateItemPosition(localTickCount);
             return;
         }
 
@@ -83,6 +91,8 @@ public class Conveyor : MonoBehaviour
             pullInventory.ChangeOutputStackCount(0, -1);
 
             itemSlot.CreateWorldItem(item);
+
+            itemLocalStartPosition = itemSlot.DefaultItemDisplayPosition.localPosition + new Vector3(0, 0, 0.5f);
         }
         if (pullSlot != null)
         {
@@ -93,9 +103,32 @@ public class Conveyor : MonoBehaviour
         }
     }
 
-    private void UpdateItemPosition()
+    private void UpdateItemPosition(int localTickCount)
     {
+        Transform centerTransform = itemSlot.DefaultItemDisplayPosition;
 
+        int halfCooldown = maxTickCooldown / 2;
+
+        Vector3 endPos = centerTransform.localPosition + new Vector3(0, 0, -0.5f);
+
+        if (Vector3.Distance(itemSlot.WorldItem.transform.localPosition, endPos) < 0.05f) return;
+        
+        // Move to center
+        if (localTickCount < halfCooldown)
+        {
+            if (localTickCount == 0 && itemLocalStartPosition == Vector3.zero) itemLocalStartPosition = itemSlot.WorldItem.transform.localPosition;
+
+            Vector3 itemPosition = Vector3.Lerp(itemLocalStartPosition, centerTransform.localPosition, (float)localTickCount / halfCooldown);
+            itemSlot.WorldItem.transform.localPosition = itemPosition;
+        }
+        // Move to end
+        else
+        {
+            Vector3 itemPosition = Vector3.Lerp(centerTransform.localPosition, endPos, ((float)localTickCount - halfCooldown) / halfCooldown);
+            itemSlot.WorldItem.transform.localPosition = itemPosition;
+
+            if (localTickCount == maxTickCooldown) itemLocalStartPosition = Vector3.zero;
+        }
     }
 
     // Should check front and behind to see if any buildings exist for pulling and pushing to

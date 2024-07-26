@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultItemDisplayPosition: {fileID: 723119627394834461}
-  setNewItemDetails: 1
+  setNewItemDetails: 0
   hasStartingTestLog: 0
   canBePulledFrom: 0
 --- !u!114 &5061427149435852385

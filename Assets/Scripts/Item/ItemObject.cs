@@ -10,4 +10,6 @@ public class ItemObject : MonoBehaviour
 {
     [SerializeField] private ItemDataSO item;
     public ItemDataSO Item { get => item; set => item = value; }
+    private int lastMoveTick = 0;
+    public int LastMoveTick { get => lastMoveTick; set => lastMoveTick = value; }
 }
