@@ -5,9 +5,9 @@ using UnityEngine;
 public enum BuildingFacing
 {
     forward,
-    right,
+    left,
     backward,
-    left
+    right
 }
 
 public class GridManager : MonoBehaviour
