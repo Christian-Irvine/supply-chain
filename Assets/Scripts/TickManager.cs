@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,8 +14,13 @@ public class TickManager : MonoBehaviour
 {
     public static TickManager Instance;
 
-    public UnityEvent BeltPush;
-    public UnityEvent BeltPull;
+    public class IntEvent : UnityEvent<int> { }
+
+    public IntEvent BeltPush = new IntEvent();
+    public IntEvent BeltPull = new IntEvent();
+
+    [SerializeField] private int maxTickCount;
+    private int tickCount;
 
     private void Awake()
     {
@@ -24,7 +30,14 @@ public class TickManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        BeltPush?.Invoke();
-        BeltPull?.Invoke();
+        Tick();
+
+        BeltPush?.Invoke(tickCount);
+        BeltPull?.Invoke(tickCount);
+    }
+
+    private void Tick()
+    {
+        tickCount = (tickCount + 1) % maxTickCount;
     }
 }

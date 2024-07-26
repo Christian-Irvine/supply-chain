@@ -50,7 +50,7 @@ public class BuildingObject : MonoBehaviour
 
             if (building != null)
             {
-                Debug.Log(building.name);
+                //Debug.Log(building.name);
                 building.CheckForNeighbors();
             }
         });

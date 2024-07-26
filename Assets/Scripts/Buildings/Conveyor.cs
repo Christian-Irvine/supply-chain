@@ -17,12 +17,10 @@ public class Conveyor : MonoBehaviour
     [SerializeField] private ItemSlot pullSlot;
 
     private int maxTickCooldown;
-    private int cooldown;
 
     private IEnumerator Start()
     {
         maxTickCooldown = Mathf.RoundToInt(60f / ((float)itemsPerMinute / 60));
-        cooldown = maxTickCooldown;
 
         buildingObject.CheckNeighbors.AddListener(CheckNeighbors);
 
@@ -33,11 +31,11 @@ public class Conveyor : MonoBehaviour
     }
 
     // Runs before PullItems
-    private void PushItems()
+    private void PushItems(int tickCount)
     {
-        TickCooldown();
+        int localTickCount = tickCount % maxTickCooldown;
 
-        if (cooldown != 0) return;
+        if (localTickCount != 0) return;
         if (itemSlot.WorldItem == null) return;
 
         if (pushInventory != null) 
@@ -53,20 +51,25 @@ public class Conveyor : MonoBehaviour
         }
         if (pushSlot != null)
         {
+            if (pushSlot.WorldItem != null) return;
 
+            pushSlot.WorldItem = itemSlot.WorldItem;
+            itemSlot.WorldItem = null;
         }
     }
 
     // Runs after PushItems
-    private void PullItems()
+    private void PullItems(int tickCount)
     {
+        int localTickCount = tickCount % maxTickCooldown;
+
         if (itemSlot.WorldItem != null)
         {
             UpdateItemPosition();
             return;
         }
 
-        if (cooldown != 0) return;
+        if (localTickCount != 0) return;
 
         if (pullInventory != null)
         {
@@ -88,11 +91,6 @@ public class Conveyor : MonoBehaviour
 
             // Pull from item slots
         }
-    }
-
-    private void TickCooldown()
-    {
-        cooldown = (cooldown + 1) % maxTickCooldown;
     }
 
     private void UpdateItemPosition()

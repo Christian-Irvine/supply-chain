@@ -322,7 +322,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultItemDisplayPosition: {fileID: 76148824}
+  setNewItemDetails: 1
   hasStartingTestLog: 1
+  canBePulledFrom: 1
 --- !u!65 &344799658
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -777,7 +779,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultItemDisplayPosition: {fileID: 605281179}
+  setNewItemDetails: 1
   hasStartingTestLog: 1
+  canBePulledFrom: 1
 --- !u!65 &449977174
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -900,7 +904,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultItemDisplayPosition: {fileID: 1802952005}
+  setNewItemDetails: 1
   hasStartingTestLog: 1
+  canBePulledFrom: 1
 --- !u!65 &480374020
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1057,7 +1063,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultItemDisplayPosition: {fileID: 1282310196}
+  setNewItemDetails: 1
   hasStartingTestLog: 1
+  canBePulledFrom: 1
 --- !u!65 &547490798
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1252,12 +1260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c5ae7b1fac9ad408a2272893441955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BeltPush:
-    m_PersistentCalls:
-      m_Calls: []
-  BeltPull:
-    m_PersistentCalls:
-      m_Calls: []
+  maxTickCount: 3600
 --- !u!4 &603770059
 Transform:
   m_ObjectHideFlags: 0
@@ -1589,7 +1592,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultItemDisplayPosition: {fileID: 1947601726}
+  setNewItemDetails: 1
   hasStartingTestLog: 0
+  canBePulledFrom: 1
 --- !u!1 &704879392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,7 +1717,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultItemDisplayPosition: {fileID: 81760428}
+  setNewItemDetails: 1
   hasStartingTestLog: 1
+  canBePulledFrom: 1
 --- !u!1 &719234513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1960,7 +1967,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultItemDisplayPosition: {fileID: 1980874084}
+  setNewItemDetails: 1
   hasStartingTestLog: 1
+  canBePulledFrom: 1
 --- !u!65 &1037171144
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2114,7 +2123,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultItemDisplayPosition: {fileID: 670698322}
+  setNewItemDetails: 1
   hasStartingTestLog: 1
+  canBePulledFrom: 1
 --- !u!65 &1095710900
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2777,7 +2788,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultItemDisplayPosition: {fileID: 584589837}
+  setNewItemDetails: 1
   hasStartingTestLog: 0
+  canBePulledFrom: 1
 --- !u!1 &1480511643
 GameObject:
   m_ObjectHideFlags: 0
@@ -2811,7 +2824,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultItemDisplayPosition: {fileID: 1080875035}
+  setNewItemDetails: 1
   hasStartingTestLog: 1
+  canBePulledFrom: 1
 --- !u!65 &1480511645
 BoxCollider:
   m_ObjectHideFlags: 0
