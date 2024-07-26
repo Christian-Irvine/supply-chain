@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class BuildingObject : MonoBehaviour
 {
-    public UnityEvent UpdateNeighbors = new UnityEvent();
+    public UnityEvent CheckNeighbors = new UnityEvent();
 
     [SerializeField] private BuildingDataSO buildingData;
     public BuildingDataSO BuildingData {  get => buildingData; set => buildingData = value; }
@@ -22,6 +22,26 @@ public class BuildingObject : MonoBehaviour
         // Waiting a frame for buildings to sort out their event listeners
         yield return null;
 
+        UpdateNeighbors();
+    }
+
+    // Should be called after loading structures on save (before first tick) and when building is placed beside it. 
+    // Is for when this object should check the things around it
+    public void CheckForNeighbors()
+    {
+        // Event is listened to elsewhere like in conveyor to see what is around it.
+        CheckNeighbors?.Invoke();
+    }
+
+    private void OnDestroy()
+    {
+        // This might not work as I don't know if this object still has a collider before it is actually destroyed
+        UpdateNeighbors();
+    }
+
+    // Is used for when the neighbors around this object should check their neighbors
+    private void UpdateNeighbors()
+    {
         List<Collider> neighbors = GridManager.Instance.GetNeighborsOfBuilding(this);
 
         neighbors.ForEach(neighbor =>
@@ -34,13 +54,5 @@ public class BuildingObject : MonoBehaviour
                 building.CheckForNeighbors();
             }
         });
-    }
-
-    // Should be called after loading structures on save (before first tick) and when building is placed beside it. 
-    public void CheckForNeighbors()
-    {
-        // Event is listened to elsewhere like in conveyor to see what is around it.
-        UpdateNeighbors?.Invoke();
-        Debug.Log("Yuhh I am checking my neighbors people!");
     }
 }

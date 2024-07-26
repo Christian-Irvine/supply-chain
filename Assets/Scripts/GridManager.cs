@@ -65,11 +65,27 @@ public class GridManager : MonoBehaviour
     public List<Collider> GetNeighborsOfBuilding(BuildingObject buildingObject)
     {
         Vector3 collisionPosition = new Vector3(buildingObject.GridPosition.x, 1.5f, buildingObject.GridPosition.z);
-        Vector3 collisionScale = new Vector3(((float)buildingObject.BuildingData.size.x / 2) + 0.5f, 3, ((float)buildingObject.BuildingData.size.y / 2) + 0.5f);
+        Vector3 collisionScale = new Vector3(((float)buildingObject.BuildingData.size.x / 2) + 0.45f, 3, ((float)buildingObject.BuildingData.size.y / 2) + 0.45f);
 
         Collider[] collisions = Physics.OverlapBox(collisionPosition, collisionScale, Quaternion.identity, ~inverseNeighborMask);
         List<Collider> neighbors = collisions.ToList();
 
         return neighbors;
+    }
+
+    public List<Collider> GetBuildingsAtGridPosition(Vector3Int gridPosition)
+    {
+        Vector3 collisionPosition = new Vector3(gridPosition.x, 1.5f, gridPosition.z);
+        Vector3 collisionScale = new Vector3(0.45f, 3, 0.45f);
+
+        Collider[] collisions = Physics.OverlapBox(collisionPosition, collisionScale, Quaternion.identity, ~inverseNeighborMask);
+        List<Collider> neighbors = collisions.ToList();
+
+        return neighbors;
+    }
+
+    public Vector3Int RoundVector3ToInt(Vector3 vector3)
+    {
+        return new Vector3Int(Mathf.RoundToInt(vector3.x), Mathf.RoundToInt(vector3.y), Mathf.RoundToInt(vector3.z));
     }
 }
