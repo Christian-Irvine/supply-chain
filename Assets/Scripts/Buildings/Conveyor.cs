@@ -13,8 +13,8 @@ public class Conveyor : MonoBehaviour
     [SerializeField] private BuildingInventory pushInventory;
     [SerializeField] private ItemSlot pushSlot;
 
-    private BuildingInventory pullInventory;
-    private ItemSlot pullSlot;
+    [SerializeField] private BuildingInventory pullInventory;
+    [SerializeField] private ItemSlot pullSlot;
 
     private int maxTickCooldown;
     private int cooldown;
@@ -41,8 +41,7 @@ public class Conveyor : MonoBehaviour
 
         if (pushInventory != null) 
         {
-            Debug.Log($"pushing into {pushInventory.name}");
-        
+            
         }
         if (pushSlot != null)
         {
@@ -53,11 +52,24 @@ public class Conveyor : MonoBehaviour
     // Runs after PushItems
     private void PullItems()
     {
+        if (itemSlot.WorldItem != null)
+        {
+            UpdateItemPosition();
+            return;
+        }
+
         if (cooldown != 0) return;
 
         if (pullInventory != null)
         {
+            Debug.Log("Pulling from inventory!");
 
+            // If nothing to pull return
+            if (pullInventory.OutputStacks.Count == 0) return;
+
+            pullInventory.ChangeOutputStackCount(0, -1);
+
+            itemSlot.CreateWorldItem(pullInventory.OutputStacks[0].Item);
         }
         if (pullSlot != null)
         {
@@ -68,6 +80,11 @@ public class Conveyor : MonoBehaviour
     private void TickCooldown()
     {
         cooldown = (cooldown + 1) % maxTickCooldown;
+    }
+
+    private void UpdateItemPosition()
+    {
+
     }
 
     // Should check front and behind to see if any buildings exist for pulling and pushing to

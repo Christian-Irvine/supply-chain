@@ -10,11 +10,12 @@ public class ItemSlot : MonoBehaviour
 {
     private ItemObject worldItem;
     [SerializeField] private Transform defaultItemDisplayPosition;
+    [SerializeField] private bool setNewItemDetails = true;
     [SerializeField] private bool hasStartingTestLog = false;
 
     public ItemObject WorldItem { get => worldItem; set {
             worldItem = value;
-            SetupWorldItem();
+            if (setNewItemDetails) SetupWorldItem();
         }
     }
 
@@ -39,5 +40,12 @@ public class ItemSlot : MonoBehaviour
     public void DestroyWorldItem()
     {
         Destroy(WorldItem.gameObject);
+    }
+
+    public void CreateWorldItem(ItemDataSO item, bool setupItem = false)
+    {
+        WorldItem = Instantiate(item.worldItem);
+        // Checks if setNewItemDetails is false because it would do it anyway if its true
+        if (setupItem && !setNewItemDetails) SetupWorldItem();
     }
 }

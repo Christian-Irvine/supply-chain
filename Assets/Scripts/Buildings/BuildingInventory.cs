@@ -64,7 +64,14 @@ public class BuildingInventory : MonoBehaviour
 
         if (index == -1) return;
 
-        int maxStack = maxStackSize < 0 ? item.maxStackSize : maxStackSize;
+        ChangeInputStackCount(index, change);
+    }
+
+    public void ChangeInputStackCount(int index, int change)
+    {
+        if (index == -1) return;
+
+        int maxStack = maxStackSize < 0 ? inputStacks[index].Item.maxStackSize : maxStackSize;
 
         inputStacks[index].Count = Mathf.Clamp(inputStacks[index].Count + change, 0, maxStack);
 
@@ -83,8 +90,13 @@ public class BuildingInventory : MonoBehaviour
 
         if (index == -1) return;
 
+        ChangeOutputStackCount(index, change);
+    }
+
+    public void ChangeOutputStackCount(int index, int change)
+    {
         outputStacks[index].Count += change;
-        
+
         if (outputStacks[index].Count <= 0)
         {
             outputStacks.RemoveAt(index);
