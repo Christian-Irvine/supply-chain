@@ -42,11 +42,13 @@ public class Conveyor : MonoBehaviour
 
         if (pushInventory != null) 
         {
-            if (pullInventory.TryAddItemToInput(itemSlot.WorldItem.Item))
+            bool itemAddedToInput = pushInventory.TryAddItemToInput(itemSlot.WorldItem.Item);
+
+            if (itemAddedToInput)
             {
+                Debug.Log($"Pushing {pushInventory.InputStacks[0].Item.displayName} from {pushInventory.name}!");
                 // Pushing item into machine
                 itemSlot.DestroyWorldItem();
-                Debug.Log("Pushing into inventory!");
             }
         }
         if (pushSlot != null)
@@ -68,14 +70,16 @@ public class Conveyor : MonoBehaviour
 
         if (pullInventory != null)
         {
-            Debug.Log("Pulling from inventory!");
-
             // If nothing to pull return
             if (pullInventory.OutputStacks.Count == 0) return;
 
+            Debug.Log($"Pulling {pullInventory.OutputStacks[0].Item.displayName} from {pullInventory.name}!");
+
+            ItemDataSO item = pullInventory.OutputStacks[0].Item;
+
             pullInventory.ChangeOutputStackCount(0, -1);
 
-            itemSlot.CreateWorldItem(pullInventory.OutputStacks[0].Item);
+            itemSlot.CreateWorldItem(item);
         }
         if (pullSlot != null)
         {

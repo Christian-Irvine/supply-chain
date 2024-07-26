@@ -49,6 +49,7 @@ public class ItemSlot : MonoBehaviour
     public void CreateWorldItem(ItemDataSO item, bool setupItem = false)
     {
         WorldItem = Instantiate(item.worldItem);
+        WorldItem.Item = item;
         // Checks if setNewItemDetails is false because it would do it anyway if its true
         if (setupItem && !setNewItemDetails) SetupWorldItem();
     }
