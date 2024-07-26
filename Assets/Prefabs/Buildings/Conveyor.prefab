@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932d83a6b286c5a44967395d4493031d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpdateNeighbors:
+  CheckNeighbors:
     m_PersistentCalls:
       m_Calls: []
   buildingData: {fileID: 11400000, guid: 8a3d6a02f5c842f41a7c172cd48ddeef, type: 2}
@@ -107,8 +107,7 @@ MonoBehaviour:
   buildingObject: {fileID: 7008807479644277249}
   pushCheckPosition: {fileID: 1934735536713690558}
   pullCheckPosition: {fileID: 6174256071741359865}
-  pushBuilding: {fileID: 0}
-  pullBuilding: {fileID: 0}
+  itemsPerMinute: 60
 --- !u!1 &2775997941415281397
 GameObject:
   m_ObjectHideFlags: 0

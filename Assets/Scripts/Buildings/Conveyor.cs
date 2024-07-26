@@ -9,11 +9,21 @@ public class Conveyor : MonoBehaviour
     [SerializeField] private BuildingObject buildingObject;
     [SerializeField] private Transform pushCheckPosition;
     [SerializeField] private Transform pullCheckPosition;
-    [SerializeField] private BuildingObject pushBuilding;
-    [SerializeField] private BuildingObject pullBuilding;
+    [SerializeField] private int itemsPerMinute;
+    [SerializeField] private BuildingInventory pushInventory;
+    [SerializeField] private ItemSlot pushSlot;
+
+    private BuildingInventory pullInventory;
+    private ItemSlot pullSlot;
+
+    private int maxTickCooldown;
+    private int cooldown;
 
     private IEnumerator Start()
     {
+        maxTickCooldown = Mathf.RoundToInt(60f / ((float)itemsPerMinute / 60));
+        cooldown = maxTickCooldown;
+
         buildingObject.CheckNeighbors.AddListener(CheckNeighbors);
 
         yield return null;
@@ -25,13 +35,39 @@ public class Conveyor : MonoBehaviour
     // Runs before PullItems
     private void PushItems()
     {
-        if (pushBuilding == null) return;
+        TickCooldown();
+
+        if (cooldown != 0) return;
+
+        if (pushInventory != null) 
+        {
+            Debug.Log($"pushing into {pushInventory.name}");
+        
+        }
+        if (pushSlot != null)
+        {
+
+        }
     }
 
     // Runs after PushItems
     private void PullItems()
     {
-        if (pullBuilding == null) return;
+        if (cooldown != 0) return;
+
+        if (pullInventory != null)
+        {
+
+        }
+        if (pullSlot != null)
+        {
+
+        }
+    }
+
+    private void TickCooldown()
+    {
+        cooldown = (cooldown + 1) % maxTickCooldown;
     }
 
     // Should check front and behind to see if any buildings exist for pulling and pushing to
@@ -40,32 +76,45 @@ public class Conveyor : MonoBehaviour
         // Getting Push Position
         List<Collider> pushPosItems = GridManager.Instance.GetBuildingsAtGridPosition(GridManager.Instance.RoundVector3ToInt(pushCheckPosition.position));
 
-        pushBuilding = null;
+        pushInventory = null;
+        pushSlot = null;
 
         foreach (Collider collider in pushPosItems)
         {
-            BuildingObject pushObject = pushPosItems[0].GetComponent<BuildingObject>();
-            if (pushObject != null)
+            BuildingInventory inventory = collider.GetComponent<BuildingInventory>();
+            if (inventory != null)
             {
-                pushBuilding = pushObject;
-                continue;
+                pushInventory = inventory;
+                break;
+            }
+            ItemSlot slot = collider.GetComponent<ItemSlot>();
+            if (slot != null)
+            {
+                pushSlot = slot;
+                break;
             }
         }
 
         // Getting Pull Position
         List<Collider> pullPosItems = GridManager.Instance.GetBuildingsAtGridPosition(GridManager.Instance.RoundVector3ToInt(pullCheckPosition.position));
 
-        pullBuilding = null;
+        pullInventory = null;
+        pullSlot = null;
 
         foreach (Collider collider in pullPosItems)
         {
-            BuildingObject pullObject = pullPosItems[0].GetComponent<BuildingObject>();
-            if (pullObject != null)
+            BuildingInventory inventory = collider.GetComponent<BuildingInventory>();
+            if (inventory != null)
             {
-                pullBuilding = pullObject;
-                continue;
+                pullInventory = inventory;
+                break;
+            }
+            ItemSlot slot = collider.GetComponent<ItemSlot>();
+            if (slot != null)
+            {
+                pullSlot = slot;
+                break;
             }
         }
-        
     }
 }
