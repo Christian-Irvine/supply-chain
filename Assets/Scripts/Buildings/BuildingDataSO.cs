@@ -6,7 +6,9 @@ public enum FloorType
 {
     Factory,
     Store,
-    Storage
+    Storage,
+    FactoryJoining,
+    StorageJoining
 }
 
 /// <summary>
