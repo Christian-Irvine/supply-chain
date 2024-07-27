@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de794074c4fabe4f96823a050240493, type: 3}
+  m_Name: StorageRack
+  m_EditorClassIdentifier: 
+  displayName: Storage Rack
+  id: storage-rack
+  prefab: {fileID: 7728156280742252501, guid: 8d2151c8064c06d4f9e8dd06085f3b63, type: 3}
+  purchaseCost: 25
+  sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  size: {x: 2, y: 1}
+  isRotatable: 1
+  floorTypes: 02000000

@@ -209,7 +209,7 @@ Transform:
   m_GameObject: {fileID: 104557833}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -105.5, y: 0, z: 99.5}
+  m_LocalPosition: {x: -106.5, y: 0, z: 99.5}
   m_LocalScale: {x: 20, y: 10, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 200129382}
   m_Layer: 9
   m_Name: StoreFloor (1)
-  m_TagString: StoreFloor
+  m_TagString: StorageFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1417,7 +1417,7 @@ Transform:
   m_GameObject: {fileID: 642077653}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 104.5, y: 0, z: 99.5}
+  m_LocalPosition: {x: 105.5, y: 0, z: 99.5}
   m_LocalScale: {x: 20, y: 10, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2616,13 +2616,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   registeredBuildings:
+  - {fileID: 11400000, guid: 8a3d6a02f5c842f41a7c172cd48ddeef, type: 2}
   - {fileID: 11400000, guid: 846f7ff51f0093b4cb91f1cf1986bf8d, type: 2}
   - {fileID: 11400000, guid: 9e48523bbdc6c384aace6c5dcd339746, type: 2}
   - {fileID: 11400000, guid: ce17fd76abbc340419181039fb4c5a23, type: 2}
   - {fileID: 11400000, guid: 10046f0932a53c341b4507e7196bec49, type: 2}
   - {fileID: 11400000, guid: 0bc0d29561f90aa47a9a0c63824e7cbf, type: 2}
   - {fileID: 11400000, guid: 49369caaafcbcb6489beecadfb9af9e6, type: 2}
-  - {fileID: 11400000, guid: 8a3d6a02f5c842f41a7c172cd48ddeef, type: 2}
+  - {fileID: 11400000, guid: e500c6c7a42a0b64ea18fb996719ba1f, type: 2}
 --- !u!4 &1337618860
 Transform:
   m_ObjectHideFlags: 0
