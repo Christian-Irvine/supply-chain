@@ -67,6 +67,9 @@ public class GridManager : MonoBehaviour
         Vector3 collisionPosition = new Vector3(buildingObject.GridPosition.x, 1.5f, buildingObject.GridPosition.z);
         Vector3 collisionScale = new Vector3(((float)buildingObject.BuildingData.size.x / 2) + 0.95f, 3, ((float)buildingObject.BuildingData.size.y / 2) + 0.95f);
 
+        // Rotate scale if rotated
+        if ((int)buildingObject.Facing % 2 == 1) collisionScale = new Vector3(collisionScale.z, collisionScale.y, collisionScale.x);
+
         Collider[] collisions = Physics.OverlapBox(collisionPosition, collisionScale, Quaternion.identity, ~inverseNeighborMask);
         List<Collider> neighbors = collisions.ToList();
 
