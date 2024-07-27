@@ -10,6 +10,7 @@ public class Conveyor : MonoBehaviour
     [SerializeField] private Transform pushCheckPosition;
     [SerializeField] private Transform pullCheckPosition;
     [SerializeField] private int itemsPerMinute;
+
     [SerializeField] private BuildingInventory pushInventory;
     [SerializeField] private ItemSlot pushSlot;
 
@@ -106,6 +107,12 @@ public class Conveyor : MonoBehaviour
     private void UpdateItemPosition(int localTickCount)
     {
         Transform centerTransform = itemSlot.DefaultItemDisplayPosition;
+        
+        if (!isOnScreen)
+        {
+            itemSlot.WorldItem.transform.localPosition = centerTransform.localPosition;
+            return;
+        } 
 
         int halfCooldown = maxTickCooldown / 2;
 

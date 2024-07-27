@@ -16,6 +16,7 @@ public class ItemSlot : MonoBehaviour
 
     [SerializeField] private bool canBePulledFrom = true;
     public bool CanBePulledFrom { get => canBePulledFrom; }
+    [SerializeField] private float itemScaleSize = 0.8f;
 
     public ItemObject WorldItem { get => worldItem; set {
             worldItem = value;
@@ -39,6 +40,7 @@ public class ItemSlot : MonoBehaviour
         { 
             worldItem.transform.SetParent(transform, false);
             worldItem.transform.position = defaultItemDisplayPosition.position;
+            WorldItem.transform.localScale = Vector3.one * itemScaleSize;
         }
     }
 
@@ -53,6 +55,7 @@ public class ItemSlot : MonoBehaviour
         WorldItem = Instantiate(item.worldItem);
         WorldItem.Item = item;
         WorldItem.transform.SetParent(transform, false);
+        WorldItem.transform.localScale = Vector3.one * itemScaleSize;
         // Checks if setNewItemDetails is false because it would do it anyway if its true
         if (setupItem && !setNewItemDetails) SetupWorldItem();
     }

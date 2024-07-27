@@ -93,6 +93,7 @@ MonoBehaviour:
   setNewItemDetails: 0
   hasStartingTestLog: 0
   canBePulledFrom: 0
+  itemScaleSize: 0.8
 --- !u!114 &5061427149435852385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,10 +111,6 @@ MonoBehaviour:
   pushCheckPosition: {fileID: 1934735536713690558}
   pullCheckPosition: {fileID: 6174256071741359865}
   itemsPerMinute: 60
-  pushInventory: {fileID: 0}
-  pushSlot: {fileID: 0}
-  pullInventory: {fileID: 0}
-  pullSlot: {fileID: 0}
 --- !u!1 &2775997941415281397
 GameObject:
   m_ObjectHideFlags: 0
