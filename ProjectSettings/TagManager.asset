@@ -11,6 +11,7 @@ TagManager:
   - PlacementGhost
   - FactoryJoiningFloor
   - StoreJoiningFloor
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Building
   - Ground
   - Conveyor
-  - 
+  - IgnorePlacementRaycast
   - 
   - 
   - 

@@ -1755,7 +1755,7 @@ MonoBehaviour:
     m_Bits: 1527
   tileCheckIgnoreMask:
     serializedVersion: 2
-    m_Bits: 160
+    m_Bits: 2208
   tempCube: {fileID: 6366958655087302859, guid: 0151c990691a0b64695c74d15060b66a,
     type: 3}
   raycastHeight: 5
@@ -2299,9 +2299,9 @@ GameObject:
   - component: {fileID: 1091457083}
   - component: {fileID: 1091457082}
   - component: {fileID: 1091457081}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Factory/StorageWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2640,9 +2640,9 @@ GameObject:
   - component: {fileID: 1107694747}
   - component: {fileID: 1107694746}
   - component: {fileID: 1107694745}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Store/StorageWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2950,6 +2950,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0bc0d29561f90aa47a9a0c63824e7cbf, type: 2}
   - {fileID: 11400000, guid: 49369caaafcbcb6489beecadfb9af9e6, type: 2}
   - {fileID: 11400000, guid: e500c6c7a42a0b64ea18fb996719ba1f, type: 2}
+  - {fileID: 11400000, guid: a7e53a72b86ee614b98ee93655f7aaf3, type: 2}
 --- !u!4 &1337618860
 Transform:
   m_ObjectHideFlags: 0

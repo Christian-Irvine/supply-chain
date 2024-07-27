@@ -8,7 +8,7 @@ public enum FloorType
     Store,
     Storage,
     FactoryJoining,
-    StorageJoining
+    StoreJoining
 }
 
 /// <summary>
