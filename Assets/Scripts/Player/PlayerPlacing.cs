@@ -82,8 +82,8 @@ public class PlayerPlacing : MonoBehaviour
 
         Vector3 rotatedOffsets = BuildingManager.Instance.EvenOffsets;
 
-        // Reverses the size if the rotation is left or right
-        if (((int)currentFacing) % 2 != 0) // odd number
+        // Special cases for the size if the rotation is left or right
+        if ((((int)currentFacing) % 2) != 0) // odd number
         {
             rotatedOffsets = new Vector3(rotatedOffsets.z, rotatedOffsets.y, rotatedOffsets.x);
         }
@@ -95,6 +95,12 @@ public class PlayerPlacing : MonoBehaviour
         if (((int)currentFacing) == 1 || (int)currentFacing == 2) // 1 and 2
         {
             rotatedOffsets = new Vector3(rotatedOffsets.x * -1, rotatedOffsets.y, rotatedOffsets.z * -1);
+        }
+
+        // For if the x size is even when rotated left or right edge case (I don't know why)
+        if ((((int)currentFacing) % 2) != 0 && (buildingData.size.x % 2) == 0)
+        {
+            rotatedOffsets = new Vector3(rotatedOffsets.x * -1, rotatedOffsets.y, rotatedOffsets.z);
         }
 
         if (!buildingData.isRotatable) currentFacing = BuildingFacing.forward;
