@@ -12,6 +12,9 @@ public class StorageManager : MonoBehaviour
     private int storageCapacity;
     public int StorageCapacity { get => storageCapacity; }
 
+    private List<StorageItem> storageItems = new List<StorageItem>();
+    public List<StorageItem> StorageItems { get => storageItems; }
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -50,5 +53,14 @@ public class StorageManager : MonoBehaviour
         });
 
         Debug.Log(storageCapacity);
+    }
+
+    // Fills storage items with list of all items (this will be changed when loading a save)
+    private void FillStorageItems()
+    {
+        ItemManager.Instance.RegisteredItems.ForEach(item =>
+        {
+            storageItems.Add(new StorageItem(item));
+        });
     }
 }
