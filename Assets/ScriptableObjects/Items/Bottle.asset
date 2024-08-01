@@ -17,3 +17,4 @@ MonoBehaviour:
   worldItem: {fileID: 0}
   value: 3
   maxStackSize: 2
+  sprite: {fileID: 21300000, guid: 490a208a323991c4b8b5355372d81df9, type: 3}

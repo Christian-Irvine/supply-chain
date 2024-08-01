@@ -18,3 +18,4 @@ MonoBehaviour:
     type: 3}
   value: 4
   maxStackSize: 2
+  sprite: {fileID: 21300000, guid: 5a9e664708622d14cb07ae7eb2f8269d, type: 3}

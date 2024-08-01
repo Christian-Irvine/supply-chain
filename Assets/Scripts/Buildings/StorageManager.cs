@@ -29,6 +29,7 @@ public class StorageManager : MonoBehaviour
     private void Start()
     {
         CalculateStorage();
+        FillStorageItems();
     }
 
     public void AddStorageRack(StorageRack rack)
