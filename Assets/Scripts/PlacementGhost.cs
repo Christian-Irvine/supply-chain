@@ -21,6 +21,10 @@ public class PlacementGhost : MonoBehaviour
         Instance = this;
     }
 
+    private void Start() {
+        ghostModel.SetActive(false);
+    }
+
     public void SetScale(Vector2Int scale)
     {
         GhostModel.transform.localScale = new Vector3(scale.x + 0.05f, ghostHeight, scale.y + 0.05f);
